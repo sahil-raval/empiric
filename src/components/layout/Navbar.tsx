@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'wouter';
-import logo from '@assets/EMPIRIC-TECHCRAFT.png';
+
 
 const navLinks = [
   { name: 'Home',          path: '/' },
@@ -88,7 +88,7 @@ export function Navbar() {
           <div className="max-w-[1400px] mx-auto px-6 md:px-8 flex justify-between items-center h-[60px]">
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0 z-10">
-              <img src={logo} alt="Empiric TechCraft" className="h-9 w-auto object-contain" />
+              <img src="/logo.png" alt="Empiric TechCraft" className="h-9 w-auto object-contain" />
             </Link>
 
             {/* Desktop links */}
@@ -139,7 +139,7 @@ export function Navbar() {
 
         {/* Top bar — logo + close mirrored */}
         <div className="relative flex items-center justify-between px-6 h-[60px] border-b border-white/6">
-          <img src={logo} alt="Empiric TechCraft" className="h-8 w-auto object-contain brightness-0 invert" />
+          <img src="/logo.png" alt="Empiric TechCraft" className="h-12 w-auto object-contain brightness-0 invert" />
           <button
             aria-label="Close menu"
             className="w-10 h-10 flex items-center justify-center"

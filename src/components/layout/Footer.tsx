@@ -2,7 +2,6 @@ declare module '*.png';
 
 import React from 'react';
 import { Link } from 'wouter';
-import logo from "../../assets/EMPIRIC-TECHCRAFT.png";
 import { Mail, MapPin, Phone } from 'lucide-react';
 export function Footer() {
   return (
@@ -14,7 +13,7 @@ export function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 md:col-span-1">
             <Link href="/" className="inline-flex mb-5">
-              <img src={logo} alt="Empiric TechCraft" className="h-9 w-auto object-contain brightness-0 invert" />
+            <img src="/white-logo.png" alt="Empiric TechCraft" className="h-24 w-auto object-contain" />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-6">
               Precision engineering and design consultancy for manufacturers, OEMs, and product developers. Founded 2024, Jamnagar, Gujarat.

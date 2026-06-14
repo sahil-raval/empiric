@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-
+import { ScrollToTop } from "@/components/ui/scrollToTop";
 // Layout
 import { Navbar }       from "@/components/layout/Navbar";
 import { Footer }       from "@/components/layout/Footer";
@@ -24,6 +24,7 @@ const queryClient = new QueryClient();
 function Router() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
+      <ScrollToTop />
       <CustomCursor />
       <PageProgress />
       <Navbar />

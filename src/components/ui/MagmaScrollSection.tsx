@@ -52,40 +52,36 @@ const PHASES: Phase[] = [
 
 export function MagmaScrollSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const activeRef = useRef<number>(0);
+  const activeIndexRef = useRef<number>(0);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const phaseEls = Array.from(container.querySelectorAll<HTMLElement>('.magma-phase'));
-    const imageEls = Array.from(container.querySelectorAll<HTMLElement>('.magma-image'));
-    const dotEls   = Array.from(container.querySelectorAll<HTMLElement>('.magma-dot'));
+    const phaseEls    = Array.from(container.querySelectorAll<HTMLElement>('.magma-phase'));
+    const imageEls    = Array.from(container.querySelectorAll<HTMLElement>('.magma-image'));
+    const dotEls      = Array.from(container.querySelectorAll<HTMLElement>('.magma-dot'));
     const lineFill    = container.querySelector<HTMLElement>('.magma-line-fill');
     const counterEl   = container.querySelector<HTMLElement>('.magma-counter');
     const progressBar = container.querySelector<HTMLElement>('.magma-progress');
 
-    function setActive(index: number) {
-      if (index === activeRef.current) return;
-      activeRef.current = index;
-
+    function applyActive(index: number) {
       phaseEls.forEach((el, i) => {
-        el.style.opacity = i === index ? '1' : '0';
-        el.style.transform = i === index ? 'translateY(0px)' : 'translateY(30px)';
+        el.style.opacity     = i === index ? '1' : '0';
+        el.style.transform   = i === index ? 'translateY(0px)' : 'translateY(30px)';
       });
       imageEls.forEach((el, i) => {
-        el.style.opacity = i === index ? '1' : '0';
-        el.style.transform = i === index ? 'scale(1)' : 'scale(0.95)';
+        el.style.opacity     = i === index ? '1' : '0';
+        el.style.transform   = i === index ? 'scale(1)' : 'scale(0.95)';
       });
       dotEls.forEach((el, i) => {
-        el.style.transform = i === index ? 'scale(1.5)' : 'scale(1)';
-        el.style.backgroundColor = i === index ? '#E87722' : 'rgba(13,21,32,0.12)';
+        el.style.transform        = i === index ? 'scale(1.5)' : 'scale(1)';
+        el.style.backgroundColor  = i === index ? '#E87722' : 'rgba(13,21,32,0.12)';
       });
     }
 
-    // Set initial state directly
-    setActive(0);
-    activeRef.current = 0;
+    // Set correct initial state immediately — no GSAP needed for this
+    applyActive(0);
 
     const trigger = ScrollTrigger.create({
       trigger: container,
@@ -93,15 +89,20 @@ export function MagmaScrollSection() {
       end: 'bottom bottom',
       onUpdate: (self) => {
         const p = self.progress;
-        if (progressBar) progressBar.style.width = `${p * 100}%`;
-        if (counterEl)   counterEl.textContent   = `${Math.round(p * 100)}%`;
-        if (lineFill)    lineFill.style.height    = `${p * 100}%`;
 
-        const index = Math.min(
+        if (progressBar) progressBar.style.width  = `${p * 100}%`;
+        if (counterEl)   counterEl.textContent     = `${Math.round(p * 100)}%`;
+        if (lineFill)    lineFill.style.height     = `${p * 100}%`;
+
+        const newIndex = Math.min(
           Math.floor(p * PHASES.length),
           PHASES.length - 1
         );
-        setActive(index);
+
+        if (newIndex !== activeIndexRef.current) {
+          activeIndexRef.current = newIndex;
+          applyActive(newIndex);
+        }
       },
     });
 
@@ -118,10 +119,15 @@ export function MagmaScrollSection() {
     >
       <div className="sticky top-0 h-screen overflow-hidden">
 
+        {/* Background grid */}
         <div className="absolute inset-0 grid-bg-fine opacity-60 pointer-events-none" />
+
+        {/* Top progress bar */}
         <div className="absolute top-0 left-0 w-full h-[2px] bg-black/6 z-30">
           <div className="magma-progress h-full bg-[#E87722]" style={{ width: '0%' }} />
         </div>
+
+        {/* Scroll progress counter */}
         <div className="absolute top-6 right-6 md:top-8 md:right-8 z-30">
           <div
             className="magma-counter text-4xl md:text-5xl font-light font-mono tabular-nums"
@@ -132,7 +138,8 @@ export function MagmaScrollSection() {
         </div>
 
         <div className="flex h-full">
-          {/* ── Left: text panels */}
+
+          {/* ── LEFT: text panels ── */}
           <div className="w-full md:w-[55%] h-full relative flex items-center">
 
             {/* Timeline spine */}
@@ -140,7 +147,7 @@ export function MagmaScrollSection() {
               <div className="absolute inset-0 bg-black/8" />
               <div
                 className="magma-line-fill absolute top-0 w-full bg-[#E87722]"
-                style={{ height: '0%', transition: 'height 0.1s linear' }}
+                style={{ height: '0%', transition: 'height 0.15s linear' }}
               />
               {PHASES.map((_, i) => (
                 <div
@@ -151,23 +158,25 @@ export function MagmaScrollSection() {
                   <div
                     className="magma-dot absolute inset-0 rounded-full"
                     style={{
-                      backgroundColor: i === 0 ? '#E87722' : 'rgba(13,21,32,0.12)',
-                      transform: i === 0 ? 'scale(1.5)' : 'scale(1)',
-                      transition: 'background-color 0.3s ease, transform 0.3s ease',
+                      backgroundColor : i === 0 ? '#E87722' : 'rgba(13,21,32,0.12)',
+                      transform       : i === 0 ? 'scale(1.5)' : 'scale(1)',
+                      transition      : 'background-color 0.3s ease, transform 0.3s ease',
                     }}
                   />
                 </div>
               ))}
             </div>
 
+            {/* Phase text cards — stacked, CSS transition shows/hides */}
             {PHASES.map((phase, i) => (
               <div
                 key={i}
                 className="magma-phase absolute inset-0 flex items-center pointer-events-none"
                 style={{
-                  opacity: i === 0 ? 1 : 0,
-                  transform: i === 0 ? 'translateY(0px)' : 'translateY(30px)',
-                  transition: 'opacity 0.4s ease, transform 0.4s ease',
+                  opacity    : i === 0 ? 1 : 0,
+                  transform  : i === 0 ? 'translateY(0px)' : 'translateY(30px)',
+                  transition : 'opacity 0.4s ease, transform 0.4s ease',
+                  willChange : 'opacity, transform',
                 }}
               >
                 <div className="pl-16 md:pl-20 pr-6 md:pr-8 max-w-lg">
@@ -188,7 +197,7 @@ export function MagmaScrollSection() {
             ))}
           </div>
 
-          {/* ── Right: images */}
+          {/* ── RIGHT: image panels ── */}
           <div className="hidden md:flex w-[45%] h-full items-center justify-center relative border-l border-black/6">
             <div className="absolute inset-0 bg-[#f8fafc]" />
             <div className="absolute inset-0 grid-bg opacity-40" />
@@ -200,12 +209,16 @@ export function MagmaScrollSection() {
                 key={i}
                 className="magma-image absolute inset-0 flex items-center justify-center pointer-events-none"
                 style={{
-                  opacity: i === 0 ? 1 : 0,
-                  transform: i === 0 ? 'scale(1)' : 'scale(0.95)',
-                  transition: 'opacity 0.4s ease, transform 0.4s ease',
+                  opacity    : i === 0 ? 1 : 0,
+                  transform  : i === 0 ? 'scale(1)' : 'scale(0.95)',
+                  transition : 'opacity 0.4s ease, transform 0.4s ease',
+                  willChange : 'opacity, transform',
                 }}
               >
-                <div className="relative w-[70%] max-w-[400px] aspect-[4/3]">
+                <div
+                  className="relative w-[70%] max-w-[400px] aspect-[4/3]"
+                  style={{ perspective: '1000px' }}
+                >
                   <img
                     src={phase.image}
                     alt={phase.headline}
@@ -221,6 +234,7 @@ export function MagmaScrollSection() {
               Scroll to explore
             </div>
           </div>
+
         </div>
       </div>
     </div>
