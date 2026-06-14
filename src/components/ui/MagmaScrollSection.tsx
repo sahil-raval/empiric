@@ -52,157 +52,62 @@ const PHASES: Phase[] = [
 
 export function MagmaScrollSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<number>(0);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Defer setup so the DOM + layout is fully painted before ScrollTrigger
-    // measures element heights — prevents incorrect start/end calculations.
-    const timer = setTimeout(() => {
-      const ctx = gsap.context(() => {
-        const phaseCount  = PHASES.length;
-        const phaseEls    = container.querySelectorAll<HTMLDivElement>('.magma-phase');
-        const imageEls    = container.querySelectorAll<HTMLDivElement>('.magma-image');
-        const dotEls      = container.querySelectorAll<HTMLDivElement>('.magma-dot');
-        const lineFill    = container.querySelector('.magma-line-fill') as HTMLElement;
-        const counterEl   = container.querySelector('.magma-counter') as HTMLElement;
-        const progressBar = container.querySelector('.magma-progress') as HTMLElement;
+    const phaseEls = Array.from(container.querySelectorAll<HTMLElement>('.magma-phase'));
+    const imageEls = Array.from(container.querySelectorAll<HTMLElement>('.magma-image'));
+    const dotEls   = Array.from(container.querySelectorAll<HTMLElement>('.magma-dot'));
+    const lineFill    = container.querySelector<HTMLElement>('.magma-line-fill');
+    const counterEl   = container.querySelector<HTMLElement>('.magma-counter');
+    const progressBar = container.querySelector<HTMLElement>('.magma-progress');
 
-        // Set initial states via GSAP so it owns the values — not inline styles
-        gsap.set(phaseEls, { opacity: 0, yPercent: 0 });
-        gsap.set(imageEls, { opacity: 0, yPercent: 0, scale: 1 });
-        gsap.set(phaseEls[0], { opacity: 1 });
-        gsap.set(imageEls[0], { opacity: 1 });
+    function setActive(index: number) {
+      if (index === activeRef.current) return;
+      activeRef.current = index;
 
-        // Master progress tracker
-        ScrollTrigger.create({
-          trigger: container,
-          start: 'top top',
-          end: 'bottom bottom',
-          onUpdate: (self) => {
-            const p = self.progress;
-            if (progressBar) progressBar.style.width = `${p * 100}%`;
-            if (counterEl)   counterEl.textContent   = `${Math.round(p * 100)}%`;
-            if (lineFill)    lineFill.style.height    = `${p * 100}%`;
-          },
-        });
+      phaseEls.forEach((el, i) => {
+        el.style.opacity = i === index ? '1' : '0';
+        el.style.transform = i === index ? 'translateY(0px)' : 'translateY(30px)';
+      });
+      imageEls.forEach((el, i) => {
+        el.style.opacity = i === index ? '1' : '0';
+        el.style.transform = i === index ? 'scale(1)' : 'scale(0.95)';
+      });
+      dotEls.forEach((el, i) => {
+        el.style.transform = i === index ? 'scale(1.5)' : 'scale(1)';
+        el.style.backgroundColor = i === index ? '#E87722' : 'rgba(13,21,32,0.12)';
+      });
+    }
 
-        const overlap   = 0.04;
-        const phaseSize = 1 / phaseCount;
+    // Set initial state directly
+    setActive(0);
+    activeRef.current = 0;
 
-        for (let i = 0; i < phaseCount; i++) {
-          const enter      = i * phaseSize;
-          const exit       = (i + 1) * phaseSize;
-          const enterStart = Math.max(0, enter - phaseSize * overlap);
-          const enterEnd   = enter + phaseSize * overlap;
-          const exitStart  = exit - phaseSize * overlap;
-          const exitEnd    = exit;
+    const trigger = ScrollTrigger.create({
+      trigger: container,
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const p = self.progress;
+        if (progressBar) progressBar.style.width = `${p * 100}%`;
+        if (counterEl)   counterEl.textContent   = `${Math.round(p * 100)}%`;
+        if (lineFill)    lineFill.style.height    = `${p * 100}%`;
 
-          // Phase text ENTER
-          if (i > 0) {
-            gsap.fromTo(phaseEls[i],
-              { yPercent: 80, opacity: 0 },
-              {
-                yPercent: 0, opacity: 1, ease: 'none',
-                scrollTrigger: {
-                  trigger: container,
-                  start: `${enterStart * 100}% top`,
-                  end:   `${enterEnd   * 100}% top`,
-                  scrub: true,
-                },
-              }
-            );
-          }
+        const index = Math.min(
+          Math.floor(p * PHASES.length),
+          PHASES.length - 1
+        );
+        setActive(index);
+      },
+    });
 
-          // Phase text EXIT
-          if (i < phaseCount - 1) {
-            gsap.fromTo(phaseEls[i],
-              { yPercent: 0, opacity: 1 },
-              {
-                yPercent: -60, opacity: 0, ease: 'none',
-                scrollTrigger: {
-                  trigger: container,
-                  start: `${exitStart * 100}% top`,
-                  end:   `${exitEnd   * 100}% top`,
-                  scrub: true,
-                },
-              }
-            );
-          }
-
-          // Image ENTER
-          if (i > 0) {
-            gsap.fromTo(imageEls[i],
-              { yPercent: 30, opacity: 0, scale: 0.85 },
-              {
-                yPercent: 0, opacity: 1, scale: 1, ease: 'none',
-                scrollTrigger: {
-                  trigger: container,
-                  start: `${enterStart * 100}% top`,
-                  end:   `${enterEnd   * 100}% top`,
-                  scrub: true,
-                },
-              }
-            );
-          }
-
-          // Image EXIT
-          if (i < phaseCount - 1) {
-            gsap.fromTo(imageEls[i],
-              { yPercent: 0, opacity: 1, scale: 1 },
-              {
-                yPercent: -20, opacity: 0, scale: 1.05, ease: 'none',
-                scrollTrigger: {
-                  trigger: container,
-                  start: `${exitStart * 100}% top`,
-                  end:   `${exitEnd   * 100}% top`,
-                  scrub: true,
-                },
-              }
-            );
-          }
-
-          // Dot activation
-          if (dotEls[i]) {
-            gsap.fromTo(dotEls[i],
-              { scale: 1, backgroundColor: 'rgba(13,21,32,0.12)' },
-              {
-                scale: 1.5, backgroundColor: '#E87722', ease: 'none',
-                scrollTrigger: {
-                  trigger: container,
-                  start: `${enterStart * 100}% top`,
-                  end:   `${enterEnd   * 100}% top`,
-                  scrub: true,
-                },
-              }
-            );
-            if (i < phaseCount - 1) {
-              gsap.fromTo(dotEls[i],
-                { scale: 1.5, backgroundColor: '#E87722' },
-                {
-                  scale: 1, backgroundColor: 'rgba(13,21,32,0.12)', ease: 'none',
-                  scrollTrigger: {
-                    trigger: container,
-                    start: `${exitStart * 100}% top`,
-                    end:   `${exitEnd   * 100}% top`,
-                    scrub: true,
-                  },
-                }
-              );
-            }
-          }
-        }
-
-        // Force ScrollTrigger to recalculate after all triggers are registered
-        ScrollTrigger.refresh();
-
-      }, container);
-
-      return () => ctx.revert();
-    }, 100);
-
-    return () => clearTimeout(timer);
+    return () => {
+      trigger.kill();
+    };
   }, []);
 
   return (
@@ -227,12 +132,15 @@ export function MagmaScrollSection() {
         </div>
 
         <div className="flex h-full">
+          {/* ── Left: text panels */}
           <div className="w-full md:w-[55%] h-full relative flex items-center">
+
+            {/* Timeline spine */}
             <div className="absolute left-6 md:left-10 top-[15vh] bottom-[15vh] w-px flex flex-col items-center">
               <div className="absolute inset-0 bg-black/8" />
               <div
                 className="magma-line-fill absolute top-0 w-full bg-[#E87722]"
-                style={{ height: '0%' }}
+                style={{ height: '0%', transition: 'height 0.1s linear' }}
               />
               {PHASES.map((_, i) => (
                 <div
@@ -242,15 +150,25 @@ export function MagmaScrollSection() {
                 >
                   <div
                     className="magma-dot absolute inset-0 rounded-full"
-                    style={{ backgroundColor: 'rgba(13,21,32,0.12)' }}
+                    style={{
+                      backgroundColor: i === 0 ? '#E87722' : 'rgba(13,21,32,0.12)',
+                      transform: i === 0 ? 'scale(1.5)' : 'scale(1)',
+                      transition: 'background-color 0.3s ease, transform 0.3s ease',
+                    }}
                   />
                 </div>
               ))}
             </div>
+
             {PHASES.map((phase, i) => (
               <div
                 key={i}
                 className="magma-phase absolute inset-0 flex items-center pointer-events-none"
+                style={{
+                  opacity: i === 0 ? 1 : 0,
+                  transform: i === 0 ? 'translateY(0px)' : 'translateY(30px)',
+                  transition: 'opacity 0.4s ease, transform 0.4s ease',
+                }}
               >
                 <div className="pl-16 md:pl-20 pr-6 md:pr-8 max-w-lg">
                   <div className="text-[10px] md:text-xs font-mono text-[#E87722] tracking-[0.2em] mb-3">
@@ -269,20 +187,25 @@ export function MagmaScrollSection() {
               </div>
             ))}
           </div>
+
+          {/* ── Right: images */}
           <div className="hidden md:flex w-[45%] h-full items-center justify-center relative border-l border-black/6">
             <div className="absolute inset-0 bg-[#f8fafc]" />
             <div className="absolute inset-0 grid-bg opacity-40" />
             <div className="absolute top-6 right-6 w-6 h-6 border-t border-r border-[#E87722]/25" />
             <div className="absolute bottom-6 left-6 w-6 h-6 border-b border-l border-[#E87722]/25" />
+
             {PHASES.map((phase, i) => (
               <div
                 key={i}
                 className="magma-image absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{
+                  opacity: i === 0 ? 1 : 0,
+                  transform: i === 0 ? 'scale(1)' : 'scale(0.95)',
+                  transition: 'opacity 0.4s ease, transform 0.4s ease',
+                }}
               >
-                <div
-                  className="relative w-[70%] max-w-[400px] aspect-[4/3]"
-                  style={{ perspective: '1000px' }}
-                >
+                <div className="relative w-[70%] max-w-[400px] aspect-[4/3]">
                   <img
                     src={phase.image}
                     alt={phase.headline}
@@ -298,7 +221,6 @@ export function MagmaScrollSection() {
               Scroll to explore
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -394,13 +394,7 @@ export default function Home() {
         </Link>
 
         {/* Centre badge */}
-        <div ref={heroBadgeRef} className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex-col items-center pointer-events-none" style={{ opacity: 0 }}>
-          <div className="w-px h-12 bg-gradient-to-b from-transparent to-[#E87722]/40" />
-          <div className="border border-[#E87722]/35 px-5 py-2.5 bg-white shadow-[0_2px_20px_rgba(0,0,0,0.08)]">
-            <p className="text-[9px] font-bold text-[#E87722] tracking-[0.3em] uppercase whitespace-nowrap">Empiric TechCraft</p>
-          </div>
-          <div className="w-px h-12 bg-gradient-to-t from-transparent to-[#E87722]/40" />
-        </div>
+       
       </section>
 
 
