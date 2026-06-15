@@ -1,4 +1,3 @@
-import React from 'react';
 import { useScrollAnimation } from '@/hooks/use-scroll-animation';
 import { Link } from 'wouter';
 
@@ -7,8 +6,7 @@ const services = [
     id: 'product-design',
     num: '01',
     title: 'Product Design & Development',
-    sub: 'Concept to 3D CAD, DFM/DFA, manufacturing drawings (SolidWorks / Creo / NX)',
-    tools: ['SolidWorks', 'Creo', 'NX'],
+    sub: 'Concept to 3D CAD, DFM/DFA, manufacturing drawings',
   },
   {
     id: 'die-design',
@@ -109,16 +107,16 @@ export default function ConsultancyIndex() {
                     {service.title}
                   </h3>
                   <p className="text-sm text-[#1a2537]/45 leading-relaxed mb-3 md:mb-0">{service.sub}</p>
-                  {/* Tool tags — shown below on mobile, hidden side on desktop */}
+                  {/* Tool tags — mobile */}
                   <div className="flex flex-wrap gap-1.5 mt-2 md:hidden">
-                    {service.tools.map(t => (
+                    {service.tools?.map(t => (
                       <span key={t} className="text-[10px] px-2 py-0.5 bg-[#f0f4f8] text-[#1a2537]/40 border border-black/6 uppercase tracking-wider">{t}</span>
                     ))}
                   </div>
                 </div>
-                {/* Tool tags — desktop right side */}
+                {/* Tool tags — desktop */}
                 <div className="hidden md:flex flex-wrap gap-1.5 max-w-[200px] lg:max-w-[240px] shrink-0 pt-1">
-                  {service.tools.map(t => (
+                  {service.tools?.map(t => (
                     <span key={t} className="text-[10px] px-2.5 py-1 bg-[#f0f4f8] text-[#1a2537]/45 border border-black/6 uppercase tracking-wider">{t}</span>
                   ))}
                 </div>
@@ -139,7 +137,7 @@ export default function ConsultancyIndex() {
             </div>
           </div>
 
-          {/* Mobile: numbered list */}
+          {/* Mobile */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-black/8 md:hidden gsap-stagger-container">
             {processSteps.map((step, i) => (
               <div key={step} className="gsap-stagger-item p-6 border-b border-r border-black/8 last:border-b-0 [&:nth-child(even)]:border-r-0 hover:bg-[#f8fafc] transition-colors group">
@@ -149,7 +147,7 @@ export default function ConsultancyIndex() {
             ))}
           </div>
 
-          {/* Desktop: 5-col grid */}
+          {/* Desktop */}
           <div className="hidden md:grid grid-cols-5 gap-0 border border-black/8 gsap-stagger-container">
             {processSteps.map((step, i) => (
               <div key={step} className="gsap-stagger-item p-8 border-r border-black/8 last:border-r-0 hover:bg-[#f8fafc] transition-colors group">

@@ -211,7 +211,7 @@ export default function Contact() {
           <div className="flex flex-wrap gap-2">
             {[
               'Product Design & Development', 'CAD Modeling', 'CNC Fixture Design',
-              'Industrial Packaging Design', 'SolidWorks / Creo / NX', 'Industrial Manufacturing',
+              'Industrial Packaging Design', 'Industrial Manufacturing',
               'CNC Machining', 'Plumbing Components', 'Electrical Components',
               'CNC Precision Components', 'Automotive Engineering', 'DFM Engineering',
               'Casting & Forging Die Design', 'Reverse Engineering', 'Value Engineering (VAVE)',

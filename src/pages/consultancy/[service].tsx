@@ -25,13 +25,13 @@ const serviceData: Record<string, ServiceInfo> = {
     industries: ['Electrical', 'Plumbing', 'Automotive', 'Industrial'],
     keyServices: [
       { title: 'Concept Design', desc: 'Initial layouts, design concepts, and feasibility studies before committing to full development.' },
-      { title: '3D Modeling', desc: 'Parametric CAD models and assemblies using SolidWorks, Creo, or NX — editable and production-ready.' },
+      { title: '3D Modeling', desc: 'Parametric CAD models and assemblies which are editable and production-ready.' },
       { title: 'Design Optimization', desc: 'Weight, cost, and performance improvement through DFM/DFA analysis and engineering review.' },
       { title: 'Detail Engineering', desc: 'Full manufacturing drawings, GD&T specifications, and documentation packages.' },
     ],
     process: ['Requirement Study', 'Concept Design', '3D Modeling', 'Optimization', 'Final Drawings'],
     capabilities: [
-      'Parametric CAD modeling expertise (SolidWorks / Creo / NX)',
+      'Parametric CAD modeling expertise',
       'DFM and DFA integration from the first concept',
       'Tolerance and fit control to ISO / DIN standards',
       'Material selection support for metals and engineering plastics',
@@ -45,7 +45,6 @@ const serviceData: Record<string, ServiceInfo> = {
       'Full design documentation package',
     ],
     technical: [
-      { label: 'Software', val: 'SolidWorks / Creo / NX' },
       { label: 'Standards', val: 'ISO / DIN' },
       { label: 'Tolerance', val: 'Functional fit based on application' },
       { label: 'Material', val: 'Metals and engineering plastics' },
@@ -153,7 +152,7 @@ const serviceData: Record<string, ServiceInfo> = {
     support: 'Engineering-ready data for redesign, optimization, and manufacturing.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
     keyServices: [
-      { title: '3D Model Creation', desc: 'CAD model reconstruction from physical samples — clean, editable, parametric models in SolidWorks or Creo.' },
+      { title: '3D Model Creation', desc: 'CAD model reconstruction from physical samples, clean, editable, parametric models.' },
       { title: '2D Drawing Generation', desc: 'Full manufacturing drawings with dimensions, tolerances, and GD&T from reconstructed models.' },
       { title: 'Design Reconstruction', desc: 'Feature-based model rebuilding that captures design intent, not just geometry.' },
       { title: 'Data Optimization', desc: 'Clean, structured, editable CAD output — ready for modification, redesign, or direct manufacture.' },
@@ -175,7 +174,6 @@ const serviceData: Record<string, ServiceInfo> = {
     ],
     technical: [
       { label: 'Input', val: 'Physical part / measurement data' },
-      { label: 'Software', val: 'SolidWorks / Creo / NX' },
       { label: 'Accuracy', val: 'Reverse-fit dimensional accuracy' },
       { label: 'Output', val: 'Editable CAD format' },
       { label: 'Standard', val: 'ISO drawing format' },
