@@ -55,38 +55,78 @@ export default function ConsultancyIndex() {
   return (
     <div ref={containerRef} className="page-offset min-h-screen bg-[#f8fafc]">
 
-      {/* Hero */}
+      {/* ── HERO ── */}
       <section className="bg-[#0d1520] relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-5" />
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-end">
-            <div className="md:col-span-7 gsap-fade-up">
-              <span className="section-label mb-4 md:mb-6 block" style={{ color: '#E87722' }}>Design Division</span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none mb-4 md:mb-6 tracking-tight">
-                Empiric<br/>
-                <span className="text-[#E87722]">Consultancy</span>
-              </h1>
-              <p className="text-white/60 text-base md:text-lg font-light max-w-xl leading-relaxed">
-                Industrial design consultancy delivering engineering intelligence — from concept through to production-ready output.
-              </p>
-            </div>
-            <div className="md:col-span-5 gsap-fade-up">
-              <div className="border border-white/8 p-6 md:p-8">
-                <p className="text-[10px] text-white/45 uppercase tracking-widest mb-4 md:mb-6">Industries Served</p>
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+            {/* LEFT: headline + description + industries */}
+            <div className="gsap-fade-up flex flex-col gap-6">
+              <div>
+                <span className="section-label mb-4 md:mb-6 block" style={{ color: '#E87722' }}>Design Division</span>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none mb-4 md:mb-6 tracking-tight">
+                  Empiric<br />
+                  <span className="text-[#E87722]">Consultancy</span>
+                </h1>
+                <p className="text-white/60 text-base md:text-lg font-light max-w-xl leading-relaxed">
+                  Industrial design consultancy delivering engineering intelligence — from concept through to production-ready output.
+                </p>
+              </div>
+
+              {/* Industries Served — below description */}
+              <div>
+                <p className="text-[10px] text-white/40 uppercase tracking-widest mb-3">Industries Served</p>
                 <div className="flex flex-wrap gap-2">
                   {industries.map(ind => (
-                    <span key={ind} className="px-3 md:px-4 py-1.5 md:py-2 border border-white/10 text-white/65 text-xs font-medium hover:border-[#E87722]/50 hover:text-white transition-colors">
+                    <span
+                      key={ind}
+                      className="px-3 md:px-4 py-1.5 md:py-2 border border-white/15 text-white/70 text-xs font-medium hover:border-[#E87722]/60 hover:text-white transition-colors cursor-default"
+                    >
                       {ind}
                     </span>
                   ))}
                 </div>
               </div>
             </div>
+
+            {/* RIGHT: hero image */}
+            <div className="gsap-slide-right relative w-full hidden sm:block">
+              <div className="relative overflow-hidden w-full" style={{ aspectRatio: '4/3' }}>
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#E87722] z-20 pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#E87722]/35 z-20 pointer-events-none" />
+
+                <img
+                  src="/design.png"
+                  alt="Engineering design and precision manufacturing"
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'brightness(0.82) contrast(1.06)' }}
+                  onError={(e) => {
+                    // Fallback: hide image, show placeholder
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.style.background = 'rgba(255,255,255,0.03)';
+                      parent.style.border = '1px solid rgba(255,255,255,0.08)';
+                    }
+                  }}
+                />
+
+                {/* Bottom gradient to blend into dark hero bg */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520]/55 via-transparent to-transparent pointer-events-none" />
+                {/* Left edge fade */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1520]/30 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Services list */}
+      {/* ── SERVICES LIST ── */}
       <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-2">
         <div className="flex items-center justify-between py-5 md:py-6 border-b border-black/8 mb-1">
           <span className="text-[10px] text-[#1a2537]/35 uppercase tracking-widest font-semibold">Our Services</span>
@@ -120,14 +160,18 @@ export default function ConsultancyIndex() {
                     <span key={t} className="text-[10px] px-2.5 py-1 bg-[#f0f4f8] text-[#1a2537]/45 border border-black/6 uppercase tracking-wider">{t}</span>
                   ))}
                 </div>
-                <div className="text-[#E87722] text-base md:text-lg opacity-25 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 pt-1">→</div>
+
+                {/* Arrow — solid color always, brighter on hover */}
+                <div className="text-[#E87722] text-base md:text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 pt-1">
+                  →
+                </div>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Process */}
+      {/* ── PROCESS ── */}
       <section className="py-14 md:py-20 bg-white border-t border-black/6 mt-6 md:mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-end justify-between mb-10 md:mb-14 gsap-fade-up">
@@ -141,7 +185,7 @@ export default function ConsultancyIndex() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 border border-black/8 md:hidden gsap-stagger-container">
             {processSteps.map((step, i) => (
               <div key={step} className="gsap-stagger-item p-6 border-b border-r border-black/8 last:border-b-0 [&:nth-child(even)]:border-r-0 hover:bg-[#f8fafc] transition-colors group">
-                <div className="text-2xl font-bold text-[#E87722]/20 group-hover:text-[#E87722]/35 transition-colors mb-2 font-display">0{i + 1}</div>
+                <div className="text-2xl font-bold text-[#E87722]/20 group-hover:text-[#E87722]/40 transition-colors mb-2 font-display">0{i + 1}</div>
                 <h4 className="text-sm font-bold text-[#0d1520] uppercase tracking-wider">{step}</h4>
               </div>
             ))}
@@ -151,7 +195,7 @@ export default function ConsultancyIndex() {
           <div className="hidden md:grid grid-cols-5 gap-0 border border-black/8 gsap-stagger-container">
             {processSteps.map((step, i) => (
               <div key={step} className="gsap-stagger-item p-8 border-r border-black/8 last:border-r-0 hover:bg-[#f8fafc] transition-colors group">
-                <div className="text-3xl font-bold text-[#E87722]/15 group-hover:text-[#E87722]/30 transition-colors mb-4 font-display">0{i + 1}</div>
+                <div className="text-3xl font-bold text-[#E87722]/15 group-hover:text-[#E87722]/35 transition-colors mb-4 font-display">0{i + 1}</div>
                 <h4 className="text-sm font-bold text-[#0d1520] uppercase tracking-wider">{step}</h4>
               </div>
             ))}
@@ -159,7 +203,7 @@ export default function ConsultancyIndex() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ── */}
       <section className="py-12 md:py-16 bg-[#f0f4f8] border-t border-black/6">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div>

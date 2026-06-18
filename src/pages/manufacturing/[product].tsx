@@ -6,6 +6,7 @@ interface ProductInfo {
   title: string;
   tagline: string;
   support: string;
+  heroImage?: string;
   highlights: { title: string; desc: string }[];
   capabilities: string[];
   process: string[];
@@ -23,6 +24,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Electrical Components',
     tagline: 'CNC machined cable gland parts, terminals, and connectors in brass, copper, and stainless steel',
     support: 'Engineered for reliable electrical performance, sealing integrity, and high dimensional accuracy.',
+    heroImage: '/images/electrical-hero.jpg',
     highlights: [
       { title: 'Cable Gland Components', desc: 'Gland body, lock nut, compression nut, and adaptors machined to precise dimensional requirements.' },
       { title: 'Brass Terminals', desc: 'Neutral links, earth components, and connector pins with tight tolerances and reliable contact surfaces.' },
@@ -70,6 +72,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Faucet & Plumbing Components',
     tagline: 'CNC machined brass and stainless-steel parts for sanitary and fluid control applications',
     support: 'Engineered for leak-proof performance, smooth surface finish, and plating compatibility.',
+    heroImage: '/images/plumbing-hero.jpg',
     highlights: [
       { title: 'Faucet Internal Parts', desc: 'Spindles, cartridge components, and valve stems machined for dimensional precision and smooth operation.' },
       { title: 'Valve Components', desc: 'Bodies, sleeves, and sealing elements with precision bores and sealing surface finishes.' },
@@ -117,6 +120,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'High-Precision CNC Turned Components',
     tagline: 'Small and micro precision components with tight tolerances and superior finish',
     support: 'Manufactured for performance-critical applications across industries demanding the highest accuracy.',
+    heroImage: '/images/cnc-precision-hero.jpg',
     highlights: [
       { title: 'Micro Precision Parts', desc: 'Small geometry components in the Ø1–20mm range with consistent dimensional accuracy across production batches.' },
       { title: 'Complex Geometry', desc: 'Multi-feature profiles, undercuts, and compound angles machined on CNC turning centres and VMC.' },
@@ -165,6 +169,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Components for General Engineering',
     tagline: 'Versatile CNC machined parts for industrial assemblies and engineering systems',
     support: 'Flexible manufacturing for custom designs, small batches, and bulk production runs.',
+    heroImage: '/images/general-engineering-hero.jpg',
     highlights: [
       { title: 'Threaded Components', desc: 'Fittings, connectors, and adaptors with standard and custom thread forms to customer specifications.' },
       { title: 'Spacers & Sleeves', desc: 'Precision-machined cylindrical parts with tight bore, OD, and length control.' },
@@ -214,15 +219,19 @@ const productData: Record<string, ProductInfo> = {
 function ProcessFlow({ steps }: { steps: string[] }) {
   return (
     <>
+      {/* Mobile: vertical numbered list */}
       <div className="flex flex-col gap-0 md:hidden border border-black/8">
         {steps.map((step, i) => (
           <div key={step} className="flex items-center gap-4 px-5 py-4 border-b border-black/6 last:border-0">
             <span className="text-xl font-bold text-[#E87722]/30 font-display w-6 shrink-0">0{i + 1}</span>
             <span className="text-sm font-semibold text-[#0d1520] uppercase tracking-wider">{step}</span>
-            {i < steps.length - 1 && <span className="ml-auto text-[#E87722]/30 text-lg">↓</span>}
+            {i < steps.length - 1 && (
+              <span className="ml-auto text-[#E87722] text-lg font-bold opacity-80">↓</span>
+            )}
           </div>
         ))}
       </div>
+      {/* Desktop: horizontal step flow */}
       <div className="hidden md:flex border border-black/8">
         {steps.map((step, i) => (
           <div key={step} className="flex-1 relative group">
@@ -231,8 +240,9 @@ function ProcessFlow({ steps }: { steps: string[] }) {
               <div className="text-xs font-bold text-[#0d1520] uppercase tracking-wider leading-tight">{step}</div>
             </div>
             {i < steps.length - 1 && (
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-5 h-5 bg-white border border-[#E87722]/30 rounded-full flex items-center justify-center">
-                <span className="text-[#E87722] text-[10px] font-bold">→</span>
+              /* Solid filled orange circle arrow — clearly visible */
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-6 h-6 bg-[#E87722] rounded-full flex items-center justify-center shadow-md">
+                <span className="text-white text-[11px] font-bold leading-none">→</span>
               </div>
             )}
             {i < steps.length - 1 && <div className="absolute right-0 top-0 bottom-0 w-px bg-black/8" />}
@@ -269,33 +279,77 @@ export default function ManufacturingProduct() {
       {/* ── HERO ── */}
       <section className="bg-[#0d1520] relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-5" />
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
-          <Link href="/manufacturing" className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-[#E87722] transition-colors mb-6 md:mb-8 font-medium gsap-fade-up">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 relative z-10">
+          <Link
+            href="/manufacturing"
+            className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-[#E87722] transition-colors mb-6 md:mb-8 font-medium gsap-fade-up"
+          >
             ← Back to Manufacturing
           </Link>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            <div className="md:col-span-8 gsap-slide-left">
-              <span className="section-label mb-4 md:mb-5 block" style={{ color: '#E87722' }}>Empiric TechCraft</span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-3 tracking-tight">{p.title}</h1>
-              <p className="text-white/70 text-base md:text-lg font-light mb-2">{p.tagline}</p>
-              <p className="text-white/50 text-sm font-light max-w-xl">{p.support}</p>
-            </div>
-            <div className="md:col-span-4 gsap-slide-right">
-              {/* Tolerance badge */}
-              <div className="grid grid-cols-2 gap-px bg-white/5">
+
+          {/* Two-column hero layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+            {/* LEFT: text + stats */}
+            <div className="gsap-slide-left flex flex-col gap-6">
+              <div>
+                <span className="section-label mb-4 md:mb-5 block" style={{ color: '#E87722' }}>Empiric TechCraft</span>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-3 tracking-tight">{p.title}</h1>
+                <p className="text-white/70 text-base md:text-lg font-light mb-2">{p.tagline}</p>
+                <p className="text-white/50 text-sm font-light max-w-xl">{p.support}</p>
+              </div>
+
+              {/* Stats — moved below description */}
+              <div className="grid grid-cols-4 gap-px bg-white/5 max-w-sm">
                 {[
                   { val: '±0.01mm', label: 'Tolerance' },
                   { val: 'ISO', label: 'Standard' },
                   { val: '100%', label: 'Inspected' },
                   { val: '4+', label: 'Materials' },
                 ].map(s => (
-                  <div key={s.label} className="bg-[#111d2e] p-4 text-center">
-                    <div className="text-lg font-bold text-white mb-0.5 font-display">{s.val}</div>
-                    <div className="text-[9px] text-white/45 uppercase tracking-widest">{s.label}</div>
+                  <div key={s.label} className="bg-[#111d2e] px-3 py-4 text-center">
+                    <div className="text-sm md:text-base font-bold text-white mb-0.5 font-display">{s.val}</div>
+                    <div className="text-[8px] md:text-[9px] text-white/45 uppercase tracking-widest leading-tight">{s.label}</div>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* RIGHT: hero image */}
+            <div className="gsap-slide-right relative w-full hidden sm:block">
+              <div className="relative overflow-hidden w-full" style={{ aspectRatio: '4/3' }}>
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#E87722] z-20 pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#E87722]/35 z-20 pointer-events-none" />
+
+                {p.heroImage ? (
+                  <img
+                    src={p.heroImage}
+                    alt={p.title}
+                    className="w-full h-full object-cover"
+                    style={{ filter: 'brightness(0.82) contrast(1.06)' }}
+                    onError={(e) => {
+                      const target = e.currentTarget as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.style.background = 'rgba(255,255,255,0.03)';
+                        parent.style.border = '1px solid rgba(255,255,255,0.08)';
+                      }
+                    }}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-white/3 border border-white/8">
+                    <span className="text-white/20 text-xs uppercase tracking-widest">Image Coming Soon</span>
+                  </div>
+                )}
+
+                {/* Gradient overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520]/55 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1520]/30 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

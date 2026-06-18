@@ -24,6 +24,7 @@ export default function Contact() {
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'demo_service';
       const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'demo_template';
+      const autoReplyTemplateId = import.meta.env.VITE_EMAILJS_AUTOREPLY_TEMPLATE_ID || 'demo_autoreply';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'demo_key';
 
       if (serviceId === 'demo_service') {
@@ -35,15 +36,21 @@ export default function Contact() {
         return;
       }
 
-      await emailjs.send(serviceId, templateId, {
+      const templateParams = {
         from_name: formData.name,
         company: formData.company,
         from_email: formData.email,
         phone: formData.phone,
         message: formData.message,
-      }, publicKey);
+      };
 
-      toast({ title: "Message Sent", description: "Your enquiry has been sent successfully." });
+      // Send internal enquiry notification to sales@empirictechcraft.com
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      // Send auto-reply confirmation to the enquirer
+      await emailjs.send(serviceId, autoReplyTemplateId, templateParams, publicKey);
+
+      toast({ title: "Message Sent", description: "Your enquiry has been sent. A confirmation has been emailed to you." });
       setFormData({ name: '', company: '', email: '', phone: '', message: '' });
     } catch {
       toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
@@ -112,9 +119,9 @@ export default function Contact() {
                     <MapPin className="w-4 h-4 text-[#E87722]" />
                   </div>
                   <div>
-                    <p className="text-xs text-[#1a2537]/40 mb-1.5 font-medium uppercase tracking-wider">Headquarters</p>
+                    <p className="text-xs text-[#1a2537]/40 mb-1.5 font-medium uppercase tracking-wider">Location</p>
                     <p className="text-[#0d1520] font-medium leading-relaxed text-sm">
-                      Jamnagar, Gujarat 361001<br/>India
+                      Heritage Ind. Park, Plot No. 1/29,Jamnagar, Gujarat 361004, India<br/>
                     </p>
                   </div>
                 </div>
@@ -125,29 +132,13 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-xs text-[#1a2537]/40 mb-1.5 font-medium uppercase tracking-wider">Business Hours</p>
-                    <p className="text-[#0d1520] font-medium text-sm">Mon – Sat, 9:00 AM – 6:00 PM IST</p>
+                    <p className="text-[#0d1520] font-medium text-sm">Sat – Thu, 9:00 AM – 6:00 PM IST | Closed on Friday</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Company quick facts */}
-            <div className="bg-[#0d1520] rounded-sm p-8">
-              <h3 className="text-xs font-semibold text-white/55 uppercase tracking-wider mb-6">Company</h3>
-              <div className="space-y-4">
-                {[
-                  { label: 'Founded', value: '2024' },
-                  { label: 'Type', value: 'Privately Held' },
-                  { label: 'Team Size', value: '2–10 employees' },
-                  { label: 'Location', value: 'Jamnagar, Gujarat, India' },
-                ].map((item) => (
-                  <div key={item.label} className="flex justify-between items-center border-b border-white/5 pb-4 last:border-0 last:pb-0">
-                    <span className="text-xs text-white/40 font-medium uppercase tracking-wider">{item.label}</span>
-                    <span className="text-sm text-white font-medium">{item.value}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            
           </div>
 
           {/* Enquiry Form */}

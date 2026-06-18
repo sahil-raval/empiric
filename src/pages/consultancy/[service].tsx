@@ -15,6 +15,7 @@ interface ServiceInfo {
   whyEmpic: string[];
   cta: string;
   industries: string[];
+  heroImage?: string;
 }
 
 const serviceData: Record<string, ServiceInfo> = {
@@ -23,6 +24,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Concept to production-ready engineering design',
     support: 'Optimized for function, cost, and manufacturability across multiple industries.',
     industries: ['Electrical', 'Plumbing', 'Automotive', 'Industrial'],
+    heroImage: '/images/product-design-hero.jpg',
     keyServices: [
       { title: 'Concept Design', desc: 'Initial layouts, design concepts, and feasibility studies before committing to full development.' },
       { title: '3D Modeling', desc: 'Parametric CAD models and assemblies which are editable and production-ready.' },
@@ -65,6 +67,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'LPDC, GDC and forging tool engineering solutions',
     support: 'Optimized for metal flow, structural strength, and long tool life.',
     industries: ['Automotive', 'Plumbing', 'Electrical', 'General Engineering'],
+    heroImage: '/images/die-design-hero.jpg',
     keyServices: [
       { title: 'LPDC Die Design', desc: 'Low-pressure die casting dies engineered for controlled metal flow and consistent solidification.' },
       { title: 'GDC Die Design', desc: 'Gravity die casting tools with optimized parting lines, gating, and cooling for high-quality castings.' },
@@ -108,6 +111,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Stable machining, repeatability, and cycle time optimization',
     support: 'Designed for precision and production efficiency on CNC turning and VMC machines.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
+    heroImage: '/images/cnc-fixtures-hero.jpg',
     keyServices: [
       { title: 'Fixture Design', desc: 'Work-holding design for CNC turning, VMC milling, and multi-operation setups.' },
       { title: 'Clamping Systems', desc: 'Secure and repeatable clamping layouts engineered for force, stability, and cycle time.' },
@@ -151,6 +155,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Convert physical parts into accurate, editable CAD models',
     support: 'Engineering-ready data for redesign, optimization, and manufacturing.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
+    heroImage: '/images/reverse-engineering-hero.jpg',
     keyServices: [
       { title: '3D Model Creation', desc: 'CAD model reconstruction from physical samples, clean, editable, parametric models.' },
       { title: '2D Drawing Generation', desc: 'Full manufacturing drawings with dimensions, tolerances, and GD&T from reconstructed models.' },
@@ -193,6 +198,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Reduce cost without affecting performance',
     support: 'Engineering-driven redesign for manufacturing efficiency and cost optimization.',
     industries: ['Automotive', 'Electrical', 'Industrial', 'General Engineering'],
+    heroImage: '/images/vave-hero.jpg',
     keyServices: [
       { title: 'Cost Analysis', desc: 'Component-level cost breakdown identifying design, material, and process cost drivers.' },
       { title: 'Design Optimization', desc: 'Material and geometry improvement that reduces cost while maintaining function and performance.' },
@@ -236,6 +242,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Engineering-led protection for precision components',
     support: 'Packaging designed for logistics, storage, and handling of industrial and precision parts.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
+    heroImage: '/images/packaging-hero.jpg',
     keyServices: [
       { title: 'Structural Design', desc: 'Custom packaging structures — trays, inserts, cartons, and returnable containers for industrial components.' },
       { title: 'Material Selection', desc: 'Corrugated, foam, plastic, and composite material selection for protection and cost balance.' },
@@ -286,7 +293,9 @@ function ProcessFlow({ steps }: { steps: string[] }) {
           <div key={step} className="flex items-center gap-4 px-5 py-4 border-b border-black/6 last:border-0">
             <span className="text-xl font-bold text-[#E87722]/30 font-display w-6 shrink-0">0{i + 1}</span>
             <span className="text-sm font-semibold text-[#0d1520] uppercase tracking-wider">{step}</span>
-            {i < steps.length - 1 && <span className="ml-auto text-[#E87722]/30 text-lg">↓</span>}
+            {i < steps.length - 1 && (
+              <span className="ml-auto text-[#E87722] text-lg font-bold opacity-80">↓</span>
+            )}
           </div>
         ))}
       </div>
@@ -299,8 +308,9 @@ function ProcessFlow({ steps }: { steps: string[] }) {
               <div className="text-xs font-bold text-[#0d1520] uppercase tracking-wider leading-tight">{step}</div>
             </div>
             {i < steps.length - 1 && (
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-5 h-5 bg-white border border-[#E87722]/30 rounded-full flex items-center justify-center">
-                <span className="text-[#E87722] text-[10px] font-bold">→</span>
+              /* Darker, more visible arrow connector */
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-6 h-6 bg-[#E87722] rounded-full flex items-center justify-center shadow-md">
+                <span className="text-white text-[11px] font-bold leading-none">→</span>
               </div>
             )}
             {i < steps.length - 1 && <div className="absolute right-0 top-0 bottom-0 w-px bg-black/8" />}
@@ -337,27 +347,73 @@ export default function ConsultancyService() {
       {/* ── HERO ── */}
       <section className="bg-[#0d1520] relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-5" />
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16">
-          <Link href="/consultancy" className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-[#E87722] transition-colors mb-6 md:mb-8 font-medium gsap-fade-up">
+
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-16 relative z-10">
+          <Link
+            href="/consultancy"
+            className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-[#E87722] transition-colors mb-6 md:mb-8 font-medium gsap-fade-up"
+          >
             ← Back to Consultancy
           </Link>
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
-            <div className="md:col-span-8 gsap-slide-left">
-              <span className="section-label mb-4 md:mb-5 block" style={{ color: '#E87722' }}>Empiric Consultancy</span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-3 tracking-tight">{s.title}</h1>
-              <p className="text-white/70 text-base md:text-lg font-light mb-2">{s.tagline}</p>
-              <p className="text-white/50 text-sm font-light max-w-xl">{s.support}</p>
-            </div>
-            <div className="md:col-span-4 gsap-slide-right">
-              <div className="border border-white/8 p-5 md:p-6">
-                <p className="text-[10px] text-white/45 uppercase tracking-widest mb-4">Industries Served</p>
+
+          {/* Two-column hero layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+            {/* LEFT: text + industries */}
+            <div className="gsap-slide-left flex flex-col gap-5">
+              <div>
+                <span className="section-label mb-4 block" style={{ color: '#E87722' }}>Empiric Consultancy</span>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-3 tracking-tight">
+                  {s.title}
+                </h1>
+                <p className="text-white/70 text-base md:text-lg font-light mb-2">{s.tagline}</p>
+                <p className="text-white/50 text-sm font-light max-w-xl">{s.support}</p>
+              </div>
+
+              {/* Industries Served — moved below the description */}
+              <div>
+                <p className="text-[10px] text-white/40 uppercase tracking-widest mb-3">Industries Served</p>
                 <div className="flex flex-wrap gap-2">
                   {s.industries.map(ind => (
-                    <span key={ind} className="px-3 py-1.5 border border-white/10 text-white/65 text-xs">{ind}</span>
+                    <span
+                      key={ind}
+                      className="px-3 py-1.5 border border-white/15 text-white/70 text-xs hover:border-[#E87722]/50 hover:text-white transition-colors"
+                    >
+                      {ind}
+                    </span>
                   ))}
                 </div>
               </div>
             </div>
+
+            {/* RIGHT: hero image */}
+            <div className="gsap-slide-right relative w-full">
+              {s.heroImage ? (
+                <div className="relative overflow-hidden w-full" style={{ aspectRatio: '4/3' }}>
+                  {/* Subtle orange accent border top-left */}
+                  <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#E87722] z-20 pointer-events-none" />
+                  {/* Subtle corner accent bottom-right */}
+                  <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#E87722]/40 z-20 pointer-events-none" />
+                  <img
+                    src={s.heroImage}
+                    alt={s.title}
+                    className="w-full h-full object-cover"
+                    style={{ filter: 'brightness(0.85) contrast(1.05)' }}
+                  />
+                  {/* Dark gradient overlay on bottom for blending with dark bg */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520]/60 via-transparent to-transparent" />
+                </div>
+              ) : (
+                /* Fallback placeholder if no image is set */
+                <div
+                  className="w-full flex items-center justify-center border border-white/8 bg-white/4 text-white/20 text-sm"
+                  style={{ aspectRatio: '4/3' }}
+                >
+                  <span className="uppercase tracking-widest text-xs">Image Coming Soon</span>
+                </div>
+              )}
+            </div>
+
           </div>
         </div>
       </section>

@@ -51,38 +51,70 @@ export default function ManufacturingIndex() {
   return (
     <div ref={containerRef} className="page-offset min-h-screen bg-[#f8fafc]">
 
-      {/* Hero */}
+      {/* ── HERO ── */}
       <section className="bg-[#0d1520] relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-5" />
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-8 items-end">
-            <div className="md:col-span-7 gsap-fade-up">
-              <span className="section-label mb-4 md:mb-6 block" style={{ color: '#E87722' }}>Manufacturing Division</span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none mb-4 md:mb-6 tracking-tight">
-                Empiric<br/>
-                <span className="text-[#E87722]">TechCraft</span>
-              </h1>
-              <p className="text-white/60 text-base md:text-lg font-light max-w-xl leading-relaxed">
-                CNC precision manufacturing of brass, stainless steel, copper, and aluminium components machined to exact tolerances.
-              </p>
-            </div>
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-            {/* Specs grid */}
-            <div className="md:col-span-5 gsap-fade-up">
-              <div className="grid grid-cols-2 gap-px bg-white/5">
+            {/* LEFT: headline + description + specs */}
+            <div className="gsap-fade-up flex flex-col gap-6">
+              <div>
+                <span className="section-label mb-4 md:mb-6 block" style={{ color: '#E87722' }}>Manufacturing Division</span>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-none mb-4 md:mb-6 tracking-tight">
+                  Empiric<br />
+                  <span className="text-[#E87722]">TechCraft</span>
+                </h1>
+                <p className="text-white/60 text-base md:text-lg font-light max-w-xl leading-relaxed">
+                  CNC precision manufacturing of brass, stainless steel, copper, and aluminium components machined to exact tolerances.
+                </p>
+              </div>
+
+              {/* Specs grid — moved below description */}
+              <div className="grid grid-cols-4 gap-px bg-white/5 max-w-sm">
                 {specs.map(s => (
-                  <div key={s.label} className="bg-[#111d2e] p-5 md:p-6 text-center">
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-1 font-display">{s.val}</div>
-                    <div className="text-[9px] md:text-[10px] text-white/45 uppercase tracking-widest leading-tight">{s.label}</div>
+                  <div key={s.label} className="bg-[#111d2e] px-3 py-4 text-center">
+                    <div className="text-base md:text-lg font-bold text-white mb-0.5 font-display">{s.val}</div>
+                    <div className="text-[8px] md:text-[9px] text-white/40 uppercase tracking-widest leading-tight">{s.label}</div>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* RIGHT: hero image */}
+            <div className="gsap-slide-right relative w-full hidden sm:block">
+              <div className="relative overflow-hidden w-full" style={{ aspectRatio: '4/3' }}>
+                {/* Corner accents */}
+                <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#E87722] z-20 pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#E87722]/35 z-20 pointer-events-none" />
+
+                <img
+                  src="/manufacturing.png"
+                  alt="CNC precision machining"
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'brightness(0.82) contrast(1.06)' }}
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.style.background = 'rgba(255,255,255,0.03)';
+                      parent.style.border = '1px solid rgba(255,255,255,0.08)';
+                    }
+                  }}
+                />
+
+                {/* Gradient overlays to blend into dark bg */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520]/55 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0d1520]/30 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Materials band */}
+      {/* ── MATERIALS BAND ── */}
       <section className="bg-[#E87722]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-0">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-white/20">
@@ -95,7 +127,7 @@ export default function ManufacturingIndex() {
         </div>
       </section>
 
-      {/* Products list */}
+      {/* ── PRODUCTS LIST ── */}
       <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-2">
         <div className="flex items-center justify-between py-5 md:py-6 border-b border-black/8 mb-1">
           <span className="text-[10px] text-[#1a2537]/35 uppercase tracking-widest font-semibold">Product Categories</span>
@@ -129,14 +161,18 @@ export default function ManufacturingIndex() {
                     <span key={m} className="text-[10px] px-2.5 py-1 bg-[#f0f4f8] text-[#1a2537]/45 border border-black/6 uppercase tracking-wider">{m}</span>
                   ))}
                 </div>
-                <div className="text-[#E87722] text-base md:text-lg opacity-25 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 pt-1">→</div>
+
+                {/* Arrow — solid, always visible */}
+                <div className="text-[#E87722] text-base md:text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 pt-1">
+                  →
+                </div>
               </div>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Capabilities */}
+      {/* ── CAPABILITIES ── */}
       <section className="py-14 md:py-20 bg-white border-t border-black/6 mt-6 md:mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-end justify-between mb-10 md:mb-14 gsap-fade-up">
@@ -166,7 +202,7 @@ export default function ManufacturingIndex() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ── */}
       <section className="py-12 md:py-16 bg-[#f0f4f8] border-t border-black/6">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <div>
