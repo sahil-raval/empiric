@@ -32,7 +32,6 @@ const manufacturingProducts = [
 const stats = [
   { val: '0.01', prefix: '±', suffix: 'mm', label: 'Tolerance',        decimals: 2 },
   { val: '100',  prefix: '',  suffix: '%',  label: 'Quality Inspected', decimals: 0 },
-  { val: '2026', prefix: '',  suffix: '',   label: 'Founded',           decimals: 0 },
   { val: '4',    prefix: '',  suffix: '+',  label: 'Material Types',    decimals: 0 },
 ];
 
@@ -127,9 +126,7 @@ export default function Home() {
 
           <div ref={heroTagRef} className="flex items-center gap-3 mb-6 md:mb-8" style={{ opacity: 0 }}>
             <div className="w-8 h-px bg-[#E87722]" />
-            <span className="text-[11px] font-bold text-[#E87722] tracking-[0.35em] uppercase">
-              Precision Engineering · Est. 2026
-            </span>
+            
           </div>
 
           <h1

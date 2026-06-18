@@ -69,7 +69,7 @@ export function Navbar() {
             <div className="flex items-center gap-6">
               <span className="text-[10px] text-white/60 font-medium tracking-[0.15em] uppercase">Empiric TechCraft Engineering</span>
               <span className="w-px h-3 bg-white/10" />
-              <span className="text-[10px] text-white/60 tracking-wider">Est. 2026 · Jamnagar, Gujarat, India</span>
+              <span className="text-[10px] text-white/60 tracking-wider"> Jamnagar, Gujarat, India</span>
             </div>
             <div className="flex items-center gap-6">
               <a href="tel:+919974945400"           className="text-[10px] text-white/60 hover:text-[#E87722] transition-colors tracking-wider">+91 9974945400</a>

@@ -593,7 +593,6 @@ export default function About() {
                   { num: '±0.01mm', label: 'TOLERANCE' },
                   { num: '100%', label: 'QC INSPECTED' },
                   { num: '4+', label: 'MATERIALS' },
-                  { num: '2026', label: 'FOUNDED' },
                 ].map(item => (
                   <div key={item.label} className="border border-white/[0.08] p-4 sm:p-5 hover:border-[#E87722]/30 transition-all duration-500">
                     <div className="text-lg sm:text-xl font-bold text-[#E87722] mb-1">{item.num}</div>
