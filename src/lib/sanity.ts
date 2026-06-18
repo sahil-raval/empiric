@@ -4,5 +4,5 @@ export const sanityClient = createClient({
   projectId: import.meta.env.VITE_SANITY_PROJECT_ID || "demo", // fallback to prevent crash
   dataset: import.meta.env.VITE_SANITY_DATASET || "production",
   useCdn: true,
-  apiVersion: "2024-01-01",
+  apiVersion: "2026-01-01",
 });

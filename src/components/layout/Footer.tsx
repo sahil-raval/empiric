@@ -16,7 +16,7 @@ export function Footer() {
             <img src="/white-logo.png" alt="Empiric TechCraft" className="h-24 w-auto object-contain" />
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed mb-6">
-              Precision engineering and design consultancy for manufacturers, OEMs, and product developers. Founded 2024, Jamnagar, Gujarat.
+              Precision engineering and design consultancy for manufacturers, OEMs, and product developers. Founded 2026, Jamnagar, Gujarat.
             </p>
             <ul className="space-y-2.5">
               <li><Link href="/about" className="text-sm text-gray-300 hover:text-[#E87722] transition-colors">About Us</Link></li>

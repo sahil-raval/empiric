@@ -32,7 +32,7 @@ const manufacturingProducts = [
 const stats = [
   { val: '0.01', prefix: '±', suffix: 'mm', label: 'Tolerance',        decimals: 2 },
   { val: '100',  prefix: '',  suffix: '%',  label: 'Quality Inspected', decimals: 0 },
-  { val: '2024', prefix: '',  suffix: '',   label: 'Founded',           decimals: 0 },
+  { val: '2026', prefix: '',  suffix: '',   label: 'Founded',           decimals: 0 },
   { val: '4',    prefix: '',  suffix: '+',  label: 'Material Types',    decimals: 0 },
 ];
 
@@ -128,7 +128,7 @@ export default function Home() {
           <div ref={heroTagRef} className="flex items-center gap-3 mb-6 md:mb-8" style={{ opacity: 0 }}>
             <div className="w-8 h-px bg-[#E87722]" />
             <span className="text-[11px] font-bold text-[#E87722] tracking-[0.35em] uppercase">
-              Precision Engineering · Est. 2024
+              Precision Engineering · Est. 2026
             </span>
           </div>
 
@@ -292,7 +292,7 @@ export default function Home() {
             <div className="relative overflow-hidden gsap-slide-right order-1 md:order-2">
               <div className="relative aspect-[4/3] overflow-hidden border border-black/8">
                 <img
-                  src={heroCnc}
+                  src="/consultancy-home.png"
                   alt="Engineering design consultancy"
                   className="w-full h-full object-cover object-center"
                   style={{ filter: 'brightness(0.88) saturate(0.9) contrast(1.05)' }}
@@ -326,7 +326,7 @@ export default function Home() {
           {/* Background image with gradient */}
           <div className="absolute inset-0">
             <img
-              src={heroCnc}
+              src="/consultancy-home.png"
               alt=""
               aria-hidden="true"
               className="w-full h-full object-cover object-center"
