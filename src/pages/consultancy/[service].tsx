@@ -67,7 +67,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'LPDC, GDC and forging tool engineering solutions',
     support: 'Optimized for metal flow, structural strength, and long tool life.',
     industries: ['Automotive', 'Plumbing', 'Electrical', 'General Engineering'],
-    heroImage: '/forging-die-design.png',
+    heroImage: '/forgin-die-design.png',
     keyServices: [
       { title: 'LPDC Die Design', desc: 'Low-pressure die casting dies engineered for controlled metal flow and consistent solidification.' },
       { title: 'GDC Die Design', desc: 'Gravity die casting tools with optimized parting lines, gating, and cooling for high-quality castings.' },
