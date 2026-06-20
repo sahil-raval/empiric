@@ -24,7 +24,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Electrical Components',
     tagline: 'CNC machined cable gland parts, terminals, and connectors in brass, copper, and stainless steel',
     support: 'Engineered for reliable electrical performance, sealing integrity, and high dimensional accuracy.',
-    heroImage: '/images/electrical-hero.jpg',
+    heroImage: '/electrical.png',
     highlights: [
       { title: 'Cable Gland Components', desc: 'Gland body, lock nut, compression nut, and adaptors machined to precise dimensional requirements.' },
       { title: 'Brass Terminals', desc: 'Neutral links, earth components, and connector pins with tight tolerances and reliable contact surfaces.' },
@@ -72,7 +72,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Faucet & Plumbing Components',
     tagline: 'CNC machined brass and stainless-steel parts for sanitary and fluid control applications',
     support: 'Engineered for leak-proof performance, smooth surface finish, and plating compatibility.',
-    heroImage: '/images/plumbing-hero.jpg',
+    heroImage: '/plumbing.png',
     highlights: [
       { title: 'Faucet Internal Parts', desc: 'Spindles, cartridge components, and valve stems machined for dimensional precision and smooth operation.' },
       { title: 'Valve Components', desc: 'Bodies, sleeves, and sealing elements with precision bores and sealing surface finishes.' },
@@ -120,7 +120,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'High-Precision CNC Turned Components',
     tagline: 'Small and micro precision components with tight tolerances and superior finish',
     support: 'Manufactured for performance-critical applications across industries demanding the highest accuracy.',
-    heroImage: '/images/cnc-precision-hero.jpg',
+    heroImage: '/cnc-precision.png',
     highlights: [
       { title: 'Micro Precision Parts', desc: 'Small geometry components in the Ø1–20mm range with consistent dimensional accuracy across production batches.' },
       { title: 'Complex Geometry', desc: 'Multi-feature profiles, undercuts, and compound angles machined on CNC turning centres and VMC.' },
@@ -169,7 +169,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Components for General Engineering',
     tagline: 'Versatile CNC machined parts for industrial assemblies and engineering systems',
     support: 'Flexible manufacturing for custom designs, small batches, and bulk production runs.',
-    heroImage: '/images/general-engineering-hero.jpg',
+    heroImage: '/general-engineering.png',
     highlights: [
       { title: 'Threaded Components', desc: 'Fittings, connectors, and adaptors with standard and custom thread forms to customer specifications.' },
       { title: 'Spacers & Sleeves', desc: 'Precision-machined cylindrical parts with tight bore, OD, and length control.' },

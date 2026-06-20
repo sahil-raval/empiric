@@ -683,7 +683,7 @@ export default function Home() {
       <section className="relative h-[45vh] sm:h-[50vh] overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 gsap-parallax" data-speed="0.15">
           <img
-            src={heroCnc}
+            src="/cnc.jpg"
             alt="CNC machining in progress"
             className="w-full h-[130%] object-cover object-center"
             style={{ filter: 'brightness(0.45) saturate(1.05)' }}

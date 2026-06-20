@@ -91,34 +91,34 @@ const processSteps = [
 
 const capabilities = [
   'CAD Design', 'Die Engineering', 'CNC Machining', 'Thread Cutting',
-  'Surface Finishing', 'Quality Inspection', 'Batch Production', 'Custom OEM',
+  'Fixture & Cutting Tool Design', 'Surface Finishing', 'Quality Inspection', 'Batch Production', 'Custom OEM',
 ];
 
 const historyMilestones = [
   {
     year: '2008',
     title: 'Engineering Foundations',
-    desc: 'Divyen Mungra began his engineering career designing tooling and assembly drawings for the automotive industry, working across supply chains serving major vehicle manufacturers.',
+    desc: 'Divyen Mungra began his engineering career at ABC Bearings Ltd, designing tooling and assembly drawings for the automotive industry, working with Tata, Toyota, Eicher, and Force Motor supply chains.',
   },
   {
     year: '2010',
     title: 'Process & Plant Design',
-    desc: 'Moved into industrial design, creating P&IDs, piping layouts, and general arrangement drawings for chemical processing plants.',
+    desc: 'Moved into industrial design at Bectochem Consultants & Engineers, creating P&IDs, piping layouts, and general arrangement drawings for chemical processing plants in Ankleshwar.',
   },
   {
     year: '2011',
-    title: '18+ Years of Design & Development Mastery',
-    desc: 'Joined a leading global MNC as Design Engineer, rapidly advancing to Deputy Manager Design. Gained exposure to international engineering standards and global supply chains while specialising in LPDC and GDC die design for low-lead brass, applied 3D flow simulation, and led product development under APQP, DFMEA, and PFMEA frameworks.',
+    title: '18+ Years of Hands-on Design & Development',
+    desc: 'Joined a leading global MNC as Design Engineer, rapidly advancing to a senior design and development role, gaining hands-on expertise in LPDC/GDC die design, fixture and cutting tool design, and product development. Specialised in LPDC and GDC die design for low-lead brass, led product development under APQP, DFMEA, and PFMEA frameworks.',
   },
   {
     year: '2018',
     title: 'Advanced Casting Tooling Leadership',
-    desc: 'Led design of complex low-wall-thickness casting tooling for special brass grades. Developed deep expertise in GD&T and multi-cavity die engineering for kitchen and bath product lines supplied globally.',
+    desc: 'Led hands-on design of complex low-wall-thickness casting tooling. Developed deep expertise in GD&T, fixture and cutting tool design, and multi-cavity die engineering for kitchen and bath product lines supplied globally.',
   },
   {
-    year: '2026',
+    year: '2024',
     title: 'Empiric TechCraft: Independent Practice',
-    desc: 'Drawing on 18+ years of design & development leadership, Divyen founded Empiric TechCraft: two integrated divisions combining industrial design consultancy with CNC precision manufacturing, bringing deep industry expertise to clients in Jamnagar and beyond.',
+    desc: 'Drawing on 17+ years of engineering leadership, Divyen founded Empiric TechCraft: two integrated divisions combining industrial design consultancy with CNC precision manufacturing, bringing deep industry expertise to clients in Jamnagar and beyond.',
   },
 ];
 
@@ -163,10 +163,10 @@ const values = [
 
 const whyBest = [
   {
-    num: '18+',
+    num: '17+',
     unit: '',
-    label: 'Years Design & Development Experience',
-    desc: 'Founder Divyen Mungra brings 18+ years spanning local Jamnagar manufacturing and global MNC environments, including senior design leadership at a leading multinational OEM. That discipline is applied to every Empiric component.',
+    label: 'Years Engineering Experience',
+    desc: 'Founder Divyen Mungra brings 18+ years of hands-on design and development experience spanning local Jamnagar manufacturing and global MNC environments. That discipline is applied to every Empiric component.al OEM. That OEM-grade engineering discipline is applied to every Empiric component.',
   },
   {
     num: '±0.01',
@@ -233,7 +233,7 @@ export default function About() {
                 industrial design consultancy and CNC precision manufacturing.
               </p>
               <p className="text-white/50 text-xs sm:text-sm font-light max-w-lg leading-[1.7] mb-8 md:mb-10">
-                Founded by <span className="text-[#E87722]/70">Divyen Mungra</span>, with <span className="text-[#E87722]/70">18+ years of design & development expertise</span>.
+                Founded by <span className="text-[#E87722]/70">Divyen Mungra</span>, former senior design and development lead at a leading global OEM, with <span className="text-[#E87722]/70">17+ years of brass engineering expertise</span>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/consultancy" className="group inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-white border border-white/20 px-5 py-3 hover:border-[#E87722] hover:text-[#E87722] transition-all duration-300">
@@ -287,11 +287,9 @@ export default function About() {
           style={{ background: 'radial-gradient(circle, rgba(232,119,34,0.06), transparent 70%)' }}
         />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
 
-          {/* ── Top row: card + text ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-12 lg:mb-16">
-
-            <div className="lg:col-span-4 gsap-fade-up">
+            <div className="lg:col-span-5 gsap-fade-up">
               <div className="relative">
                 <div className="absolute -inset-4 border border-[#E87722]/8" />
                 <div className="bg-white border border-black/[0.07] p-8 sm:p-10 relative shadow-sm">
@@ -307,10 +305,9 @@ export default function About() {
                   <div className="text-[#1a2537]/60 text-sm mb-6">Jamnagar, Gujarat · India</div>
                   <div className="border-t border-black/[0.07] pt-6 space-y-4">
                     {[
-                      { label: 'Experience', val: '18+ Years Design & Development' },
-                      { label: 'Former Role', val: 'Dy. Manager Design · MNC Global OEM' },
-                      { label: 'Exposure', val: 'Local Jamnagar + Global MNC' },
-                      { label: 'Specialisation', val: 'LPDC/GDC Die Design · Creo' },
+                      { label: 'Experience', val: '17+ Years in Brass Engineering' },
+                      { label: 'Role', val: 'Design & Development Lead · MNC OEM' },
+                      { label: 'Specialisation', val: 'LPDC/GDC Die Design · Creo · GD&T' },
                       { label: 'Expertise', val: 'APQP · DFMEA · PFMEA · GD&T' },
                     ].map(row => (
                       <div key={row.label} className="flex justify-between items-baseline gap-4">
@@ -331,37 +328,34 @@ export default function About() {
               </div>
             </div>
 
-            <div className="lg:col-span-8 gsap-fade-up">
+            <div className="lg:col-span-7 gsap-fade-up">
               <div className="luxury-label mb-8">Leadership & Experience</div>
               <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-[#0d1520] leading-[1.05] mb-8 tracking-tight">
-                18+ Years of<br />
-                <span className="text-[#E87722]">Design & Development.</span>
+                17 Years of<br />
+                <span className="text-[#E87722]">Precision Engineering.</span>
               </h2>
               <div className="w-16 h-[2px] bg-[#E87722] mb-8" />
-              <div className="space-y-5 text-[#1a2537]/65 text-[15px] leading-[1.85]">
-                <p>Empiric TechCraft is founded by <strong className="text-[#1a2537]/80">Divyen Mungra</strong>, a mechanical engineer with over 18 years of design and development experience across local and global organisations, including senior roles at leading multinational OEMs specialising in kitchen and bath products.</p>
-                <p>His career spans both local Jamnagar manufacturing and global MNC environments, giving Empiric a rare combination of on-the-ground production knowledge and the structured engineering discipline that multinational organisations demand. He developed deep expertise in LPDC and GDC die design for low-lead and special-grade brass, 3D flow simulation for casting validation, and end-to-end product development applying APQP, DFMEA, and PFMEA frameworks.</p>
-                <p>At Empiric, that same rigour — honed across local workshops and global supply chains — is applied directly to every client engagement. Your specifications are handled by the engineer who built the process, with full accountability from design through to delivery.</p>
+              <div className="space-y-5 text-[#1a2537]/65 text-[15px] leading-[1.85] max-w-lg">
+                <p>Empiric TechCraft is founded by <strong className="text-[#1a2537]/80">Divyen Mungra</strong>, a mechanical engineer with 18+ years of hands-on design and development experience across local Jamnagar manufacturing and senior roles within leading global MNC organisations.</p>
+                <p>He developed hands-on expertise in LPDC and GDC die design for low-lead and special-grade brass, CNC fixture and cutting tool design, 3D flow simulation for casting validation, and end-to-end product development applying APQP, DFMEA, and PFMEA frameworks.</p>
+                <p>At Empiric, that same engineering rigour is applied directly to every client engagement. Your specifications are handled by the engineer who built the process, with full accountability from design through to delivery.</p>
+              </div>
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { title: '18+ Yrs Hands-on D&D Experience', desc: 'Hands-on design and development spanning local Jamnagar manufacturing and senior roles at leading multinational OEMs.' },
+                  { title: 'LPDC, GDC & Fixture/Cutting Tool Design', desc: 'Low-lead brass die design, low-wall-thickness casting tooling, and CNC fixture & cutting tool design.' },
+                  { title: '3D Casting Simulation', desc: 'Flow simulation to validate tooling design before any metal is poured.' },
+                  { title: 'APQP · DFMEA · GD&T', desc: 'Every component developed under structured quality frameworks from day one.' },
+                ].map(item => (
+                  <div key={item.title} className="border border-black/[0.07] p-5 hover:border-[#E87722]/20 transition-all duration-500">
+                    <div className="w-6 h-[1px] bg-[#E87722] mb-3" />
+                    <div className="text-[12px] font-bold text-[#0d1520] mb-1.5 tracking-tight">{item.title}</div>
+                    <div className="text-[11px] text-[#1a2537]/60 leading-relaxed">{item.desc}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-
-          {/* ── Full-width 4 boxes ── */}
-          <div className="gsap-fade-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { title: '18+ Yrs Design & Development', desc: 'Senior design roles spanning local Jamnagar manufacturing and global MNC environments, including Deputy Manager Design at a leading multinational OEM.' },
-              { title: 'LPDC & GDC Die Expertise', desc: 'Low-lead brass, special-grade alloys, and low-wall-thickness casting tooling design.' },
-              { title: '3D Casting Simulation', desc: 'Flow simulation to validate tooling before any metal is poured.' },
-              { title: 'APQP · DFMEA · GD&T', desc: 'Every component developed under structured quality frameworks from day one.' },
-            ].map(item => (
-              <div key={item.title} className="border border-black/[0.07] p-6 sm:p-7 hover:border-[#E87722]/20 transition-all duration-500 bg-white shadow-sm">
-                <div className="w-8 h-[2px] bg-[#E87722] mb-4" />
-                <div className="text-base font-bold text-[#0d1520] mb-3 tracking-tight leading-snug">{item.title}</div>
-                <div className="text-[12px] text-[#1a2537]/60 leading-relaxed">{item.desc}</div>
-              </div>
-            ))}
-          </div>
-
         </div>
       </section>
 
@@ -433,7 +427,7 @@ export default function About() {
             <div>
               <div className="luxury-label mb-8">Our Journey</div>
               <h3 className="text-[clamp(1.8rem,5vw,3rem)] font-bold text-[#0d1520] mb-14 leading-[1.05] tracking-tight">
-                18+ Years in the<br /><span className="text-[#E87722]">Making.</span>
+                17 Years in the<br /><span className="text-[#E87722]">Making.</span>
               </h3>
               <div className="relative">
                 <div className="absolute left-[18px] top-0 bottom-0 w-px bg-gradient-to-b from-[#E87722]/40 via-[#E87722]/15 to-transparent hidden sm:block" />
@@ -525,8 +519,9 @@ export default function About() {
               ['Tolerance Capability', '±0.01mm guaranteed', 'Varies, often undocumented'],
               ['Design Integration', 'Full consultancy division', 'Manufacturing only'],
               ['Inspection Reports', 'Full batch documentation', 'Rarely provided'],
-              ['Founder Background', '18+ Yrs · Local & Global MNC Experience', 'Typically no OEM pedigree'],
+              ['Founder Background', 'Design & Development Lead · MNC OEM', 'Typically no hands-on OEM experience'],
               ['Die Design', 'LPDC · GDC · 3D Flow Simulation', 'Usually not available'],
+              ['Fixture & Cutting Tool Design', 'CNC fixtures · Cutting tool geometry', 'Rarely offered'],
               ['Quality Framework', 'APQP · DFMEA · PFMEA · GD&T', 'Informal or absent'],
             ].map(([crit, us, them], i) => (
               <div key={crit} className={`grid grid-cols-3 border-b border-black/[0.05] last:border-0 ${i % 2 === 1 ? 'bg-[#f9fafb]' : ''}`}>
@@ -565,7 +560,7 @@ export default function About() {
               <div className="relative overflow-hidden">
                 <div className="absolute -inset-3 border border-[#E87722]/15" />
                 <img
-                  src="/precision-about.png"
+                  src={IMAGES.componentsShowcase}
                   alt="Empiric precision brass components collection"
                   className="w-full aspect-[4/3] object-cover"
                   draggable={false}
@@ -593,6 +588,7 @@ export default function About() {
                   { num: '±0.01mm', label: 'TOLERANCE' },
                   { num: '100%', label: 'QC INSPECTED' },
                   { num: '4+', label: 'MATERIALS' },
+                  { num: '2024', label: 'FOUNDED' },
                 ].map(item => (
                   <div key={item.label} className="border border-white/[0.08] p-4 sm:p-5 hover:border-[#E87722]/30 transition-all duration-500">
                     <div className="text-lg sm:text-xl font-bold text-[#E87722] mb-1">{item.num}</div>
@@ -780,7 +776,7 @@ export default function About() {
                 <span className="text-[#E87722]">Gujarat · India</span>
               </h2>
               <p className="text-[#1a2537]/65 text-[15px] leading-[1.8] mb-10 md:mb-12 max-w-md">
-                Jamnagar produces over 70% of the world's brass components. We are built from this ecosystem, combining 18+ years of local and global exposure — from Jamnagar's precision manufacturing base to senior engineering roles within leading multinational organisations.
+                Jamnagar produces over 70% of the world's brass components. We are built from this ecosystem, with 17 years of local manufacturing expertise.
               </p>
               <div className="space-y-5 sm:space-y-6 mb-10 md:mb-12">
                 {[
@@ -806,7 +802,7 @@ export default function About() {
                 <div className="absolute -inset-4 sm:-inset-6 border border-[#E87722]/8" />
                 <div className="relative overflow-hidden">
                   <img
-                    src="/brass-quality.png"
+                    src={IMAGES.locationImage}
                     alt="Empiric TechCraft engineering overview"
                     className="w-full aspect-[16/10] object-cover"
                     draggable={false}
@@ -837,6 +833,9 @@ export default function About() {
             <h3 className="text-[clamp(1.8rem,5vw,3rem)] font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-4">
               Ready to Start a<br />Project?
             </h3>
+            <p className="text-white/75 text-sm font-light max-w-md leading-[1.7]">
+              Talk directly with Divyen Mungra, founder and lead engineer with 17+ years of precision brass expertise.
+            </p>
           </div>
           <Magnetic strength={0.25}>
             <Link href="/contact" className="group shrink-0 bg-white text-[#E87722] font-bold text-[11px] tracking-[0.2em] uppercase px-8 sm:px-10 py-4 sm:py-5 hover:bg-[#0d1520] hover:text-white transition-all duration-500 whitespace-nowrap inline-flex items-center gap-3">

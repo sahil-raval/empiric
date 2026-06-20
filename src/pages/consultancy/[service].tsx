@@ -24,7 +24,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Concept to production-ready engineering design',
     support: 'Optimized for function, cost, and manufacturability across multiple industries.',
     industries: ['Electrical', 'Plumbing', 'Automotive', 'Industrial'],
-    heroImage: '/images/product-design-hero.jpg',
+    heroImage: '/product-design.png',
     keyServices: [
       { title: 'Concept Design', desc: 'Initial layouts, design concepts, and feasibility studies before committing to full development.' },
       { title: '3D Modeling', desc: 'Parametric CAD models and assemblies which are editable and production-ready.' },
@@ -67,7 +67,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'LPDC, GDC and forging tool engineering solutions',
     support: 'Optimized for metal flow, structural strength, and long tool life.',
     industries: ['Automotive', 'Plumbing', 'Electrical', 'General Engineering'],
-    heroImage: '/images/die-design-hero.jpg',
+    heroImage: '/forging-die-design.png',
     keyServices: [
       { title: 'LPDC Die Design', desc: 'Low-pressure die casting dies engineered for controlled metal flow and consistent solidification.' },
       { title: 'GDC Die Design', desc: 'Gravity die casting tools with optimized parting lines, gating, and cooling for high-quality castings.' },
@@ -111,7 +111,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Stable machining, repeatability, and cycle time optimization',
     support: 'Designed for precision and production efficiency on CNC turning and VMC machines.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
-    heroImage: '/images/cnc-fixtures-hero.jpg',
+    heroImage: '/cnc-cutting-tools.png',
     keyServices: [
       { title: 'Fixture Design', desc: 'Work-holding design for CNC turning, VMC milling, and multi-operation setups.' },
       { title: 'Clamping Systems', desc: 'Secure and repeatable clamping layouts engineered for force, stability, and cycle time.' },
@@ -155,7 +155,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Convert physical parts into accurate, editable CAD models',
     support: 'Engineering-ready data for redesign, optimization, and manufacturing.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
-    heroImage: '/images/reverse-engineering-hero.jpg',
+    heroImage: '/reverse-engineering1.png',
     keyServices: [
       { title: '3D Model Creation', desc: 'CAD model reconstruction from physical samples, clean, editable, parametric models.' },
       { title: '2D Drawing Generation', desc: 'Full manufacturing drawings with dimensions, tolerances, and GD&T from reconstructed models.' },
@@ -198,7 +198,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Reduce cost without affecting performance',
     support: 'Engineering-driven redesign for manufacturing efficiency and cost optimization.',
     industries: ['Automotive', 'Electrical', 'Industrial', 'General Engineering'],
-    heroImage: '/images/vave-hero.jpg',
+    heroImage: '/vave.png',
     keyServices: [
       { title: 'Cost Analysis', desc: 'Component-level cost breakdown identifying design, material, and process cost drivers.' },
       { title: 'Design Optimization', desc: 'Material and geometry improvement that reduces cost while maintaining function and performance.' },
@@ -242,7 +242,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Engineering-led protection for precision components',
     support: 'Packaging designed for logistics, storage, and handling of industrial and precision parts.',
     industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
-    heroImage: '/images/packaging-hero.jpg',
+    heroImage: '/packaging.png',
     keyServices: [
       { title: 'Structural Design', desc: 'Custom packaging structures — trays, inserts, cartons, and returnable containers for industrial components.' },
       { title: 'Material Selection', desc: 'Corrugated, foam, plastic, and composite material selection for protection and cost balance.' },
