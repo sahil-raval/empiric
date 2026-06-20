@@ -71,7 +71,7 @@ const productData: Record<string, ProductInfo> = {
     title: 'Precision Faucet & Plumbing Components',
     tagline: 'CNC machined brass and stainless-steel parts for sanitary and fluid control applications',
     support: 'Engineered for leak-proof performance, smooth surface finish, and plating compatibility.',
-    heroImage: '/plumbing.png',
+    heroImage: '/jamnagar.png',
     highlights: [
       { title: 'Faucet Internal Parts', desc: 'Spindles, cartridge components, and valve stems machined for dimensional precision and smooth operation.' },
       { title: 'Valve Components', desc: 'Bodies, sleeves, and sealing elements with precision bores and sealing surface finishes.' },

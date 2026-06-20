@@ -118,7 +118,7 @@ const historyMilestones = [
   {
     year: '2024',
     title: 'Empiric TechCraft: Independent Practice',
-    desc: 'Drawing on 17+ years of engineering leadership, Divyen founded Empiric TechCraft: two integrated divisions combining industrial design consultancy with CNC precision manufacturing, bringing deep industry expertise to clients in Jamnagar and beyond.',
+    desc: 'Drawing on 18+ years of engineering leadership, Divyen founded Empiric TechCraft: two integrated divisions combining industrial design consultancy with CNC precision manufacturing, bringing deep industry expertise to clients in Jamnagar and beyond.',
   },
 ];
 
@@ -163,7 +163,7 @@ const values = [
 
 const whyBest = [
   {
-    num: '17+',
+    num: '18+',
     unit: '',
     label: 'Years Engineering Experience',
     desc: 'Founder Divyen Mungra brings 18+ years of hands-on design and development experience spanning local Jamnagar manufacturing and global MNC environments. That discipline is applied to every Empiric component.al OEM. That OEM-grade engineering discipline is applied to every Empiric component.',
@@ -233,7 +233,7 @@ export default function About() {
                 industrial design consultancy and CNC precision manufacturing.
               </p>
               <p className="text-white/50 text-xs sm:text-sm font-light max-w-lg leading-[1.7] mb-8 md:mb-10">
-                Founded by <span className="text-[#E87722]/70">Divyen Mungra</span>, former senior design and development lead at a leading global OEM, with <span className="text-[#E87722]/70">17+ years of brass engineering expertise</span>.
+                Founded by <span className="text-[#E87722]/70">Divyen Mungra</span>, former senior design and development lead at a leading global OEM, with <span className="text-[#E87722]/70">18+ years of brass engineering expertise</span>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link href="/consultancy" className="group inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.15em] uppercase text-white border border-white/20 px-5 py-3 hover:border-[#E87722] hover:text-[#E87722] transition-all duration-300">
@@ -305,7 +305,7 @@ export default function About() {
                   <div className="text-[#1a2537]/60 text-sm mb-6">Jamnagar, Gujarat · India</div>
                   <div className="border-t border-black/[0.07] pt-6 space-y-4">
                     {[
-                      { label: 'Experience', val: '17+ Years in Brass Engineering' },
+                      { label: 'Experience', val: '18+ Years in Brass Engineering' },
                       { label: 'Role', val: 'Design & Development Lead · MNC OEM' },
                       { label: 'Specialisation', val: 'LPDC/GDC Die Design · Creo · GD&T' },
                       { label: 'Expertise', val: 'APQP · DFMEA · PFMEA · GD&T' },
@@ -331,7 +331,7 @@ export default function About() {
             <div className="lg:col-span-7 gsap-fade-up">
               <div className="luxury-label mb-8">Leadership & Experience</div>
               <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-bold text-[#0d1520] leading-[1.05] mb-8 tracking-tight">
-                17 Years of<br />
+                18+ Years of<br />
                 <span className="text-[#E87722]">Precision Engineering.</span>
               </h2>
               <div className="w-16 h-[2px] bg-[#E87722] mb-8" />
@@ -406,7 +406,7 @@ export default function About() {
                 <div className="absolute -inset-4 border border-[#E87722]/8" />
                 <div className="relative overflow-hidden">
                   <img
-                    src={IMAGES.componentsShowcase}
+                    src="/jamnagar.png"
                     alt="Empiric brass precision components"
                     className="w-full aspect-[4/3] object-cover"
                     draggable={false}
@@ -427,7 +427,7 @@ export default function About() {
             <div>
               <div className="luxury-label mb-8">Our Journey</div>
               <h3 className="text-[clamp(1.8rem,5vw,3rem)] font-bold text-[#0d1520] mb-14 leading-[1.05] tracking-tight">
-                17 Years in the<br /><span className="text-[#E87722]">Making.</span>
+                18+ Years in the<br /><span className="text-[#E87722]">Making.</span>
               </h3>
               <div className="relative">
                 <div className="absolute left-[18px] top-0 bottom-0 w-px bg-gradient-to-b from-[#E87722]/40 via-[#E87722]/15 to-transparent hidden sm:block" />
@@ -560,7 +560,7 @@ export default function About() {
               <div className="relative overflow-hidden">
                 <div className="absolute -inset-3 border border-[#E87722]/15" />
                 <img
-                  src={IMAGES.componentsShowcase}
+                  src="/precision-about.png"
                   alt="Empiric precision brass components collection"
                   className="w-full aspect-[4/3] object-cover"
                   draggable={false}
@@ -776,7 +776,7 @@ export default function About() {
                 <span className="text-[#E87722]">Gujarat · India</span>
               </h2>
               <p className="text-[#1a2537]/65 text-[15px] leading-[1.8] mb-10 md:mb-12 max-w-md">
-                Jamnagar produces over 70% of the world's brass components. We are built from this ecosystem, with 17 years of local manufacturing expertise.
+                Jamnagar produces over 70% of the world's brass components. We are built from this ecosystem, with 18+ years of local manufacturing expertise.
               </p>
               <div className="space-y-5 sm:space-y-6 mb-10 md:mb-12">
                 {[
@@ -802,9 +802,9 @@ export default function About() {
                 <div className="absolute -inset-4 sm:-inset-6 border border-[#E87722]/8" />
                 <div className="relative overflow-hidden">
                   <img
-                    src={IMAGES.locationImage}
+                    src="/jamnagar1.png"
                     alt="Empiric TechCraft engineering overview"
-                    className="w-full aspect-[16/10] object-cover"
+                    className="w-full aspect-[10/9] object-cover"
                     draggable={false}
                   />
                   {/* Gradient overlay */}
@@ -833,9 +833,7 @@ export default function About() {
             <h3 className="text-[clamp(1.8rem,5vw,3rem)] font-bold text-white leading-[1.05] tracking-tight mb-3 sm:mb-4">
               Ready to Start a<br />Project?
             </h3>
-            <p className="text-white/75 text-sm font-light max-w-md leading-[1.7]">
-              Talk directly with Divyen Mungra, founder and lead engineer with 17+ years of precision brass expertise.
-            </p>
+          
           </div>
           <Magnetic strength={0.25}>
             <Link href="/contact" className="group shrink-0 bg-white text-[#E87722] font-bold text-[11px] tracking-[0.2em] uppercase px-8 sm:px-10 py-4 sm:py-5 hover:bg-[#0d1520] hover:text-white transition-all duration-500 whitespace-nowrap inline-flex items-center gap-3">
