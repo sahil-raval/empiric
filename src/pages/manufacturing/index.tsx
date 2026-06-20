@@ -35,9 +35,9 @@ const products = [
 
 const specs = [
   { val: '±0.01mm', label: 'Tolerance Control' },
-  { val: '4+', label: 'Material Types' },
-  { val: 'ISO', label: 'Standard Compliant' },
-  { val: '100%', label: 'Quality Inspected' },
+  { val: '4+',      label: 'Material Types' },
+  { val: 'ISO',     label: 'Standard Compliant' },
+  { val: '100%',    label: 'Quality Inspected' },
 ];
 
 const capabilities = [
@@ -55,7 +55,7 @@ export default function ManufacturingIndex() {
       <section className="bg-[#0d1520] relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-5" />
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
             {/* LEFT: headline + description + specs */}
             <div className="gsap-fade-up flex flex-col gap-6">
@@ -70,7 +70,7 @@ export default function ManufacturingIndex() {
                 </p>
               </div>
 
-              {/* Specs grid — moved below description */}
+              {/* Specs grid */}
               <div className="grid grid-cols-4 gap-px bg-white/5 max-w-sm">
                 {specs.map(s => (
                   <div key={s.label} className="bg-[#111d2e] px-3 py-4 text-center">
@@ -81,30 +81,25 @@ export default function ManufacturingIndex() {
               </div>
             </div>
 
-            {/* RIGHT: hero image */}
-            <div className="gsap-slide-right relative w-full hidden sm:block">
-              <div className="relative overflow-hidden w-full" style={{ aspectRatio: '4/3' }}>
-                {/* Corner accents */}
+            {/* RIGHT: hero image — visible on ALL screen sizes */}
+            <div className="gsap-slide-right relative w-full">
+              <div className="relative overflow-hidden w-full rounded-sm" style={{ aspectRatio: '4/3' }}>
                 <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#E87722] z-20 pointer-events-none" />
                 <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#E87722]/35 z-20 pointer-events-none" />
-
                 <img
                   src="/manufacturing.png"
                   alt="CNC precision machining"
                   className="w-full h-full object-cover"
                   style={{ filter: 'brightness(0.82) contrast(1.06)' }}
                   onError={(e) => {
-                    const target = e.currentTarget as HTMLImageElement;
-                    target.style.display = 'none';
-                    const parent = target.parentElement;
-                    if (parent) {
-                      parent.style.background = 'rgba(255,255,255,0.03)';
-                      parent.style.border = '1px solid rgba(255,255,255,0.08)';
+                    const t = e.currentTarget as HTMLImageElement;
+                    t.style.display = 'none';
+                    if (t.parentElement) {
+                      t.parentElement.style.background = 'rgba(255,255,255,0.03)';
+                      t.parentElement.style.border = '1px solid rgba(255,255,255,0.08)';
                     }
                   }}
                 />
-
-                {/* Gradient overlays to blend into dark bg */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520]/55 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0d1520]/30 via-transparent to-transparent pointer-events-none" />
               </div>
@@ -148,24 +143,18 @@ export default function ManufacturingIndex() {
                     {product.title}
                   </h3>
                   <p className="text-sm text-[#1a2537]/45 leading-relaxed mb-2 md:mb-0">{product.desc}</p>
-                  {/* Materials — mobile */}
                   <div className="flex flex-wrap gap-1.5 mt-2 md:hidden">
                     {product.materials.map(m => (
                       <span key={m} className="text-[10px] px-2 py-0.5 bg-[#f0f4f8] text-[#1a2537]/40 border border-black/6 uppercase tracking-wider">{m}</span>
                     ))}
                   </div>
                 </div>
-                {/* Materials — desktop */}
                 <div className="hidden md:flex flex-wrap gap-1.5 max-w-[200px] shrink-0 pt-1">
                   {product.materials.map(m => (
                     <span key={m} className="text-[10px] px-2.5 py-1 bg-[#f0f4f8] text-[#1a2537]/45 border border-black/6 uppercase tracking-wider">{m}</span>
                   ))}
                 </div>
-
-                {/* Arrow — solid, always visible */}
-                <div className="text-[#E87722] text-base md:text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 pt-1">
-                  →
-                </div>
+                <div className="text-[#E87722] text-base md:text-xl font-bold opacity-60 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0 pt-1">→</div>
               </div>
             </Link>
           ))}

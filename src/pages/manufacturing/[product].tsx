@@ -67,7 +67,6 @@ const productData: Record<string, ProductInfo> = {
     ],
     cta: 'Looking for reliable electrical component manufacturing?',
   },
-
   'plumbing': {
     title: 'Precision Faucet & Plumbing Components',
     tagline: 'CNC machined brass and stainless-steel parts for sanitary and fluid control applications',
@@ -115,7 +114,6 @@ const productData: Record<string, ProductInfo> = {
     ],
     cta: 'Looking for precision plumbing component manufacturing?',
   },
-
   'cnc-precision': {
     title: 'High-Precision CNC Turned Components',
     tagline: 'Small and micro precision components with tight tolerances and superior finish',
@@ -164,7 +162,6 @@ const productData: Record<string, ProductInfo> = {
     ],
     cta: 'Need high-precision CNC components?',
   },
-
   'general-engineering': {
     title: 'Precision Components for General Engineering',
     tagline: 'Versatile CNC machined parts for industrial assemblies and engineering systems',
@@ -214,8 +211,6 @@ const productData: Record<string, ProductInfo> = {
   },
 };
 
-// ─── Sub-components ───────────────────────────────────────────────
-
 function ProcessFlow({ steps }: { steps: string[] }) {
   return (
     <>
@@ -240,7 +235,6 @@ function ProcessFlow({ steps }: { steps: string[] }) {
               <div className="text-xs font-bold text-[#0d1520] uppercase tracking-wider leading-tight">{step}</div>
             </div>
             {i < steps.length - 1 && (
-              /* Solid filled orange circle arrow — clearly visible */
               <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-6 h-6 bg-[#E87722] rounded-full flex items-center justify-center shadow-md">
                 <span className="text-white text-[11px] font-bold leading-none">→</span>
               </div>
@@ -252,8 +246,6 @@ function ProcessFlow({ steps }: { steps: string[] }) {
     </>
   );
 }
-
-// ─── Main Page ────────────────────────────────────────────────────
 
 export default function ManufacturingProduct() {
   const [, params] = useRoute('/manufacturing/:product');
@@ -284,10 +276,10 @@ export default function ManufacturingProduct() {
             href="/manufacturing"
             className="inline-flex items-center gap-2 text-sm text-white/55 hover:text-[#E87722] transition-colors mb-6 md:mb-8 font-medium gsap-fade-up"
           >
-            ← Back to Manufacturing
+            <span className="text-[#E87722] font-bold">←</span> Back to Manufacturing
           </Link>
 
-          {/* Two-column hero layout */}
+          {/* Two-column: text left, image right — stacks on mobile */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
             {/* LEFT: text + stats */}
@@ -299,13 +291,13 @@ export default function ManufacturingProduct() {
                 <p className="text-white/50 text-sm font-light max-w-xl">{p.support}</p>
               </div>
 
-              {/* Stats — moved below description */}
+              {/* Stats */}
               <div className="grid grid-cols-4 gap-px bg-white/5 max-w-sm">
                 {[
                   { val: '±0.01mm', label: 'Tolerance' },
-                  { val: 'ISO', label: 'Standard' },
-                  { val: '100%', label: 'Inspected' },
-                  { val: '4+', label: 'Materials' },
+                  { val: 'ISO',     label: 'Standard' },
+                  { val: '100%',    label: 'Inspected' },
+                  { val: '4+',      label: 'Materials' },
                 ].map(s => (
                   <div key={s.label} className="bg-[#111d2e] px-3 py-4 text-center">
                     <div className="text-sm md:text-base font-bold text-white mb-0.5 font-display">{s.val}</div>
@@ -315,13 +307,11 @@ export default function ManufacturingProduct() {
               </div>
             </div>
 
-            {/* RIGHT: hero image */}
-            <div className="gsap-slide-right relative w-full hidden sm:block">
-              <div className="relative overflow-hidden w-full" style={{ aspectRatio: '4/3' }}>
-                {/* Corner accents */}
+            {/* RIGHT: hero image — visible on ALL sizes, below text on mobile */}
+            <div className="gsap-slide-right relative w-full">
+              <div className="relative overflow-hidden w-full rounded-sm" style={{ aspectRatio: '4/3' }}>
                 <div className="absolute top-0 left-0 w-10 h-10 border-t-2 border-l-2 border-[#E87722] z-20 pointer-events-none" />
                 <div className="absolute bottom-0 right-0 w-10 h-10 border-b-2 border-r-2 border-[#E87722]/35 z-20 pointer-events-none" />
-
                 {p.heroImage ? (
                   <img
                     src={p.heroImage}
@@ -329,12 +319,11 @@ export default function ManufacturingProduct() {
                     className="w-full h-full object-cover"
                     style={{ filter: 'brightness(0.82) contrast(1.06)' }}
                     onError={(e) => {
-                      const target = e.currentTarget as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.style.background = 'rgba(255,255,255,0.03)';
-                        parent.style.border = '1px solid rgba(255,255,255,0.08)';
+                      const t = e.currentTarget as HTMLImageElement;
+                      t.style.display = 'none';
+                      if (t.parentElement) {
+                        t.parentElement.style.background = 'rgba(255,255,255,0.03)';
+                        t.parentElement.style.border = '1px solid rgba(255,255,255,0.08)';
                       }
                     }}
                   />
@@ -343,13 +332,10 @@ export default function ManufacturingProduct() {
                     <span className="text-white/20 text-xs uppercase tracking-widest">Image Coming Soon</span>
                   </div>
                 )}
-
-                {/* Gradient overlays */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d1520]/55 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0d1520]/30 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -361,10 +347,11 @@ export default function ManufacturingProduct() {
           <h2 className="text-2xl md:text-3xl font-bold text-[#0d1520] mb-8 md:mb-10 tracking-tight gsap-fade-up">What We Manufacture</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-black/8 gsap-stagger-container">
             {p.highlights.map((h, i) => (
-              <div key={i} className="gsap-stagger-item bg-white p-7 md:p-8 hover:bg-[#f8fafc] transition-colors group">
-                <span className="num-badge mb-4 block">0{i + 1}</span>
+              <div key={i} className="gsap-stagger-item bg-white p-7 md:p-8 hover:bg-[#f8fafc] transition-colors group relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-[#E87722] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="text-2xl font-bold text-[#E87722]/20 group-hover:text-[#E87722]/40 transition-colors mb-4 font-display">0{i + 1}</div>
                 <h3 className="text-base md:text-lg font-bold text-[#0d1520] mb-2 tracking-tight group-hover:text-[#E87722] transition-colors">{h.title}</h3>
-                <p className="text-sm text-[#1a2537]/50 leading-relaxed">{h.desc}</p>
+                <p className="text-sm md:text-base text-[#1a2537]/55 leading-relaxed">{h.desc}</p>
               </div>
             ))}
           </div>
@@ -384,28 +371,24 @@ export default function ManufacturingProduct() {
       <section className="py-12 md:py-16 bg-white border-b border-black/6">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-
-            {/* Technical Specs */}
             <div className="gsap-slide-left">
               <span className="section-label mb-3 block">Technical Data</span>
-              <h3 className="text-xl font-bold text-[#0d1520] mb-5 tracking-tight">Specifications</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-[#0d1520] mb-5 tracking-tight">Specifications</h3>
               <div className="border border-black/8 divide-y divide-black/8">
                 {p.technical.map((t, i) => (
                   <div key={i} className="flex items-start gap-3 px-5 py-4">
                     <span className="text-[10px] text-[#1a2537]/35 uppercase tracking-wider font-semibold shrink-0 w-24 pt-0.5">{t.label}</span>
-                    <span className="text-sm text-[#0d1520] font-medium leading-snug">{t.val}</span>
+                    <span className="text-sm md:text-base text-[#0d1520] font-medium leading-snug">{t.val}</span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Engineering Features */}
             <div className="gsap-slide-right">
               <span className="section-label mb-3 block">Performance</span>
-              <h3 className="text-xl font-bold text-[#0d1520] mb-5 tracking-tight">Engineering Features</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-[#0d1520] mb-5 tracking-tight">Engineering Features</h3>
               <ul className="space-y-3 mb-8">
                 {p.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-[#1a2537]/60 leading-relaxed">
+                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-[#1a2537]/65 leading-relaxed">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#E87722] mt-2 shrink-0" />{f}
                   </li>
                 ))}
@@ -413,7 +396,7 @@ export default function ManufacturingProduct() {
               <span className="section-label mb-3 block">Capabilities</span>
               <ul className="space-y-2.5">
                 {p.capabilities.map((c, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-[#1a2537]/55 leading-relaxed">
+                  <li key={i} className="flex items-start gap-3 text-sm md:text-base text-[#1a2537]/60 leading-relaxed">
                     <span className="text-[#E87722] font-bold text-base leading-none">→</span>{c}
                   </li>
                 ))}
@@ -427,29 +410,25 @@ export default function ManufacturingProduct() {
       <section className="py-12 md:py-16 bg-[#f8fafc] border-b border-black/6">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-
-            {/* Surface & Coating */}
             <div className="gsap-slide-left">
               <span className="section-label mb-3 block">Finishing</span>
-              <h3 className="text-xl font-bold text-[#0d1520] mb-5 tracking-tight">Surface & Coating Options</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-[#0d1520] mb-5 tracking-tight">Surface & Coating Options</h3>
               <div className="space-y-2">
                 {p.surfaces.map((s, i) => (
-                  <div key={i} className="flex items-center gap-3 px-4 py-3 bg-white border border-black/6 text-sm text-[#1a2537]/70">
+                  <div key={i} className="flex items-center gap-3 px-4 py-3 bg-white border border-black/6 text-sm md:text-base text-[#1a2537]/70">
                     <div className="w-2 h-2 rounded-full bg-[#E87722] shrink-0" />{s}
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Quality Control */}
             <div className="gsap-slide-right">
               <span className="section-label mb-3 block">Inspection</span>
-              <h3 className="text-xl font-bold text-[#0d1520] mb-5 tracking-tight">Quality Control</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-[#0d1520] mb-5 tracking-tight">Quality Control</h3>
               <div className="space-y-2">
                 {p.quality.map((q, i) => (
                   <div key={i} className="flex items-start gap-3 px-4 py-3 bg-white border border-black/6">
                     <span className="text-[#E87722] font-bold text-sm leading-none mt-0.5">✓</span>
-                    <span className="text-sm text-[#1a2537]/70 leading-relaxed">{q}</span>
+                    <span className="text-sm md:text-base text-[#1a2537]/70 leading-relaxed">{q}</span>
                   </div>
                 ))}
               </div>
@@ -464,7 +443,7 @@ export default function ManufacturingProduct() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-6">
             <div className="shrink-0 gsap-slide-left">
               <p className="text-[10px] text-white/60 uppercase tracking-widest mb-1">Applications</p>
-              <h3 className="text-xl font-bold text-white">Industries We Serve</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white">Industries We Serve</h3>
             </div>
             <div className="flex flex-wrap gap-2 sm:gap-3 gsap-stagger-container">
               {p.applications.map(app => (
@@ -489,7 +468,7 @@ export default function ManufacturingProduct() {
               {p.whyEmpic.map((point, i) => (
                 <div key={i} className="gsap-stagger-item bg-[#0d1520] p-6 md:p-7 hover:bg-[#111d2e] transition-colors">
                   <div className="text-[#E87722] text-xl font-bold mb-3">0{i + 1}</div>
-                  <p className="text-sm text-white/55 leading-relaxed">{point}</p>
+                  <p className="text-sm md:text-base text-white/60 leading-relaxed">{point}</p>
                 </div>
               ))}
             </div>
@@ -504,7 +483,12 @@ export default function ManufacturingProduct() {
             <h3 className="text-xl sm:text-2xl font-bold text-[#0d1520] mb-1">{p.cta}</h3>
             <p className="text-sm text-[#1a2537]/45">Share your drawing or specification and we'll respond within one business day.</p>
           </div>
-          <Link href="/contact" className="btn-primary shrink-0 gsap-slide-right">Request a Quote →</Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase bg-[#E87722] text-white px-6 py-3.5 hover:bg-[#f59540] transition-all duration-300 shrink-0 gsap-slide-right"
+          >
+            Request a Quote →
+          </Link>
         </div>
       </section>
     </div>
