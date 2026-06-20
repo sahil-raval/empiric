@@ -24,7 +24,7 @@ const serviceData: Record<string, ServiceInfo> = {
     tagline: 'Concept to production-ready engineering design',
     support: 'Optimized for function, cost, and manufacturability across multiple industries.',
     industries: ['Electrical', 'Plumbing', 'Automotive', 'Industrial'],
-    heroImage: '/product-design.png',
+    heroImage: '/product-design.jpg',
     keyServices: [
       { title: 'Concept Design', desc: 'Initial layouts, design concepts, and feasibility studies before committing to full development.' },
       { title: '3D Modeling', desc: 'Parametric CAD models and assemblies which are editable and production-ready.' },
