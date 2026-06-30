@@ -280,7 +280,51 @@ const serviceData: Record<string, ServiceInfo> = {
     ],
     cta: 'Need industrial packaging design?',
   },
+  'sheet-metal-tool-design': {
+  title: 'Sheet Metal Tool Design',
+  tagline: 'Press tool, die, and progressive tooling engineering',
+  support: 'Optimized for forming accuracy, tool life, and high-volume production efficiency.',
+  industries: ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'],
+  heroImage: '/sheet-metal-tool-design.png',
+  keyServices: [
+    { title: 'Press Tool Design', desc: 'Single and compound press tools engineered for blanking, piercing, and forming operations.' },
+    { title: 'Progressive Die Design', desc: 'Multi-station progressive tooling for high-volume sheet metal production with strip layout optimization.' },
+    { title: 'Bending & Forming Tools', desc: 'Bend sequence and forming die design that controls springback and ensures dimensional accuracy.' },
+    { title: 'Tool Optimization', desc: 'Die clearance, stripper, and tool life improvement for existing sheet metal tooling.' },
+  ],
+  process: ['Component Study', 'Strip Layout', 'Tool Design', 'Optimization', 'Final Drawings'],
+  capabilities: [
+    'Press tool and progressive die design for high-volume production',
+    'Strip layout and material utilization optimization',
+    'Bend sequence and springback control',
+    'Die clearance and shear angle optimization',
+    'Stripper and pilot system design for accuracy',
+  ],
+  deliverables: [
+    '3D tool assembly models',
+    '2D manufacturing drawings for tooling',
+    'Strip layout and nesting drawings',
+    'BOM and tool component details',
+    'Design validation data',
+  ],
+  technical: [
+    { label: 'Process', val: 'Blanking / Piercing / Bending / Forming' },
+    { label: 'Material', val: 'CRCA / GI / Aluminium / Brass sheet' },
+    { label: 'Tool Steel', val: 'D2 / HCHCr / SKD11' },
+    { label: 'Tolerance', val: 'As per process requirement' },
+    { label: 'Standard', val: 'ISO / DIN' },
+  ],
+  applications: ['Automotive sheet metal parts', 'Electrical enclosures and brackets', 'Plumbing sheet components', 'General engineering sheet parts'],
+  whyEmpic: [
+    'Strong sheet metal forming process understanding',
+    'High-volume, production-ready tool detailing',
+    'Material utilization and cost efficiency built into layout design',
+    'Tool life and accuracy verified at design stage',
+  ],
+  cta: 'Need sheet metal tool design support?',
+},
 };
+
 
 // ─── Sub-components ──────────────────────────────────────────────
 

@@ -43,6 +43,13 @@ const services = [
     sub: 'Component protection, logistics optimisation, and packaging for industrial applications',
     tools: ['Protection', 'Logistics'],
   },
+  {
+    id: 'sheet-metal-tool-design',
+    num: '07',
+    title: 'Sheet Metal Tool Design',
+    sub: 'Press tool, die, and progressive tooling design for sheet metal forming, blanking, and bending',
+    tools: ['Press Tools', 'Progressive Dies', 'Blanking'],
+  },
 ];
 
 const industries = ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'];
@@ -130,7 +137,7 @@ export default function ConsultancyIndex() {
       <section className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 py-2">
         <div className="flex items-center justify-between py-5 md:py-6 border-b border-black/8 mb-1">
           <span className="text-[10px] text-[#1a2537]/35 uppercase tracking-widest font-semibold">Our Services</span>
-          <span className="text-[10px] text-[#1a2537]/35 uppercase tracking-widest font-semibold">06 Disciplines</span>
+          <span className="text-[10px] text-[#1a2537]/35 uppercase tracking-widest font-semibold">07 Disciplines</span>
         </div>
 
         <div className="gsap-stagger-container">
