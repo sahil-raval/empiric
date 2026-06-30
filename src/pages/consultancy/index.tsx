@@ -44,12 +44,12 @@ const services = [
     tools: ['Protection', 'Logistics'],
   },
   {
-    id: 'sheet-metal-tool-design',
-    num: '07',
-    title: 'Sheet Metal Tool Design',
-    sub: 'Press tool, die, and progressive tooling design for sheet metal forming, blanking, and bending',
-    tools: ['Press Tools', 'Progressive Dies', 'Blanking'],
-  },
+  id: 'sheet-metal-tool-design',
+  num: '07',
+  title: 'Sheet Metal Tool Design',
+  sub: 'Press tool and die design for sheet metal forming, blanking, and bending',
+  tools: ['Press Tools', 'Blanking', 'Forming'],
+},
 ];
 
 const industries = ['Automotive', 'Electrical', 'Plumbing', 'General Engineering'];
